@@ -1,13 +1,9 @@
 import { motion } from 'motion/react';
 import { ArrowDown, Github, Linkedin, Mail } from 'lucide-react';
+import { useNavigate } from 'react-router';
 
 export default function Hero() {
-  const scrollToSection = (id: string) => {
-    const element = document.getElementById(id);
-    if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
-    }
-  };
+  const navigate = useNavigate();
 
   return (
     <section
@@ -16,7 +12,7 @@ export default function Hero() {
     >
       {/* Animated Grid Background */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-20" />
-      
+
       {/* Glowing orbs */}
       <div className="absolute inset-0 overflow-hidden">
         <motion.div
@@ -161,16 +157,16 @@ export default function Hero() {
             className="flex flex-col sm:flex-row items-center justify-center gap-4"
           >
             <motion.button
-              onClick={() => scrollToSection('work')}
+              onClick={() => navigate('/work')}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-8 py-4 rounded-lg bg-gradient-to-r from-cyan-500 to-purple-600 text-white shadow-lg hover:shadow-cyan-500/50 transition-all duration-300"
             >
               View My Resume
             </motion.button>
-            
+
             <motion.button
-              onClick={() => scrollToSection('contact')}
+              onClick={() => navigate('/contact')}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
               className="px-8 py-4 rounded-lg border-2 border-cyan-500 text-cyan-400 hover:bg-cyan-500/10 transition-all duration-300"
@@ -182,7 +178,7 @@ export default function Hero() {
 
         {/* Scroll Indicator */}
         <motion.button
-          onClick={() => scrollToSection('about')}
+          onClick={() => navigate('/about')}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1, y: [0, 10, 0] }}
           transition={{
@@ -190,7 +186,7 @@ export default function Hero() {
             y: { duration: 2, repeat: Infinity, ease: 'easeInOut' },
           }}
           className="absolute bottom-10 left-1/2 -translate-x-1/2"
-          aria-label="Scroll to about section"
+          aria-label="Navigate to about page"
         >
           <ArrowDown className="w-8 h-8 text-cyan-400" />
         </motion.button>
