@@ -10,52 +10,28 @@ export default function Work() {
 
   const projects = [
     {
-      title: 'Secure Authentication System',
+      title: 'Tribetask (Ongoing)',
       description:
-        'Full-stack authentication platform with JWT, OAuth2, and multi-factor authentication',
-      image: 'https://images.unsplash.com/photo-1562813733-b31f71025d54?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxoYWNrZXIlMjB0ZXJtaW5hbCUyMGNvZGluZyUyMGRhcmt8ZW58MXx8fHwxNzcyMTY4ODA3fDA&ixlib=rb-4.1.0&q=80&w=1080',
-      tags: ['React', 'Node.js', 'JWT', 'PostgreSQL'],
+        'A real-time collaborative task management platform enabling users to form "Tribes" and manage shared tasks efficiently.',
+      image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0YXNrJTIwbWFuYWdlbWVudHxlbnwxfHx8fDE3NzIxNjY4MTF8MA&ixlib=rb-4.1.0&q=80&w=1080',
+      tags: ['ReactJS', 'NodeJS', 'Tailwind', 'WebSockets', 'PostgreSQL'],
       gradient: 'from-cyan-500 to-blue-600',
     },
     {
-      title: 'E-Commerce Platform',
+      title: 'Athlixir Website',
       description:
-        'Modern e-commerce solution with real-time inventory, payment integration, and analytics',
-      image: 'https://images.unsplash.com/photo-1637937459053-c788742455be?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx3ZWIlMjBkZXZlbG9wbWVudCUyMGNvZGUlMjBzY3JlZW58ZW58MXx8fHwxNzcyMTIwMjcyfDA&ixlib=rb-4.1.0&q=80&w=1080',
-      tags: ['TypeScript', 'Next.js', 'Stripe', 'MongoDB'],
+        'A responsive web application for athlete performance tracking, training management, and streamlined sports event participation.',
+      image: 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzcG9ydHN8ZW58MXx8fDE3NzIxNjY4MTF8MA&ixlib=rb-4.1.0&q=80&w=1080',
+      tags: ['ReactJS', 'NodeJS', 'Tailwind', 'MongoDB'],
       gradient: 'from-blue-500 to-purple-600',
     },
     {
-      title: 'Linux Server Dashboard',
+      title: 'Price Comparison Snapshot',
       description:
-        'Real-time monitoring dashboard for Linux servers with automated alerts and metrics',
-      image: 'https://images.unsplash.com/photo-1506399309177-3b43e99fead2?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsaW51eCUyMHNlcnZlciUyMGluZnJhc3RydWN0dXJlfGVufDF8fHx8MTc3MjE2ODgwOHww&ixlib=rb-4.1.0&q=80&w=1080',
-      tags: ['React', 'Python', 'Docker', 'Grafana'],
+        'A full-stack web application to track and compare product prices across multiple vendors with lowest-price reports.',
+      image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsZWRnZXJ8ZW58MXx8fDE3NzIxNjY4MTF8MA&ixlib=rb-4.1.0&q=80&w=1080',
+      tags: ['Spring Boot', 'MySQL', 'Thymeleaf', 'Maven'],
       gradient: 'from-cyan-500 to-purple-600',
-    },
-    {
-      title: 'Security Audit Tool',
-      description:
-        'Automated security scanning tool for web applications with detailed vulnerability reports',
-      image: 'https://images.unsplash.com/photo-1768224656445-33d078c250b7?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjeWJlcnNlY3VyaXR5JTIwbmV0d29yayUyMHRlY2hub2xvZ3l8ZW58MXx8fHwxNzcyMDU3ODUzfDA&ixlib=rb-4.1.0&q=80&w=1080',
-      tags: ['Python', 'Flask', 'SQLite', 'Nmap'],
-      gradient: 'from-purple-600 to-blue-600',
-    },
-    {
-      title: 'Cloud Infrastructure',
-      description:
-        'Scalable cloud infrastructure with automated deployment and monitoring systems',
-      image: 'https://images.unsplash.com/photo-1639503547276-90230c4a4198?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjeWJlciUyMHNlY3VyaXR5JTIwc2hpZWxkJTIwcHJvdGVjdGlvbnxlbnwxfHx8fDE3NzIwNTM2MjR8MA&ixlib=rb-4.1.0&q=80&w=1080',
-      tags: ['AWS', 'Terraform', 'Kubernetes', 'CI/CD'],
-      gradient: 'from-blue-600 to-cyan-500',
-    },
-    {
-      title: 'API Security Gateway',
-      description:
-        'API gateway with rate limiting, authentication, and comprehensive security features',
-      image: 'https://images.unsplash.com/photo-1731834452405-a472facfae95?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0ZXJtaW5hbCUyMGNvbW1hbmQlMjBsaW5lJTIwaW50ZXJmYWNlfGVufDF8fHx8MTc3MjE2ODgxMHww&ixlib=rb-4.1.0&q=80&w=1080',
-      tags: ['Node.js', 'Express', 'Redis', 'Nginx'],
-      gradient: 'from-cyan-500 to-blue-500',
     },
   ];
 

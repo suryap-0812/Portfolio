@@ -1,6 +1,6 @@
 import { motion, useInView } from 'motion/react';
 import { useRef } from 'react';
-import { Code, Shield, Server, Zap, Lock, Terminal } from 'lucide-react';
+import { Code, Server, Database, Wrench, BookOpen, Trophy } from 'lucide-react';
 
 export default function About() {
   const ref = useRef(null);
@@ -9,38 +9,38 @@ export default function About() {
   const skills = [
     {
       icon: Code,
-      title: 'Web Development',
-      description: 'Building modern, responsive web applications with React, TypeScript, and Node.js',
+      title: 'Languages',
+      description: 'C++, C, Java, JavaScript, HTML, CSS, Python',
       color: 'from-cyan-500 to-blue-600',
     },
     {
-      icon: Terminal,
-      title: 'Linux Systems',
-      description: 'Expert in Linux administration, shell scripting, and system optimization',
+      icon: Server,
+      title: 'Technologies',
+      description: 'Spring Boot, NodeJS, Express, ReactJS, TailwindCSS, Django',
       color: 'from-blue-500 to-purple-600',
     },
     {
-      icon: Shield,
-      title: 'Cybersecurity',
-      description: 'Penetration testing, vulnerability assessment, and security best practices',
+      icon: Database,
+      title: 'Databases',
+      description: 'SQL, MongoDB',
       color: 'from-cyan-500 to-purple-600',
     },
     {
-      icon: Lock,
-      title: 'Secure Development',
-      description: 'Implementing security-first architecture and encryption protocols',
+      icon: Wrench,
+      title: 'Tools',
+      description: 'Git, GitHub, Postman, Vercel, Docker',
       color: 'from-purple-600 to-blue-600',
     },
     {
-      icon: Server,
-      title: 'DevOps',
-      description: 'CI/CD pipelines, Docker, Kubernetes, and cloud infrastructure',
+      icon: BookOpen,
+      title: 'Core Concepts',
+      description: 'Data Structures & Algorithms, Object-Oriented Programming, DBMS',
       color: 'from-blue-600 to-cyan-500',
     },
     {
-      icon: Zap,
-      title: 'Performance',
-      description: 'Optimizing applications for speed, scalability, and reliability',
+      icon: Trophy,
+      title: 'Profiles & Stats',
+      description: 'Leetcode: 1484 Max Rating, 125+ solved | Skillrack: 1009+ problems solved',
       color: 'from-cyan-500 to-blue-500',
     },
   ];
@@ -53,7 +53,7 @@ export default function About() {
     >
       {/* Background grid */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-10" />
-      
+
       {/* Sword slash decoration */}
       <svg className="absolute top-0 right-0 w-full h-full opacity-10" viewBox="0 0 1000 1000">
         <motion.path
@@ -90,8 +90,8 @@ export default function About() {
             className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-purple-600 mx-auto mb-8"
           />
           <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">
-            I'm a full-stack developer with a passion for creating secure, scalable applications.
-            Specialized in web development, Linux systems, and cybersecurity.
+            I'm a passionate developer with a strong foundation in full-stack web development, data structures, and algorithms.
+            Dedicated to building robust applications and continuously learning new technologies.
           </p>
         </motion.div>
 
@@ -117,7 +117,7 @@ export default function About() {
                 transition={{ duration: 0.3 }}
                 className={`absolute -top-1 left-0 right-0 h-px bg-gradient-to-r ${skill.color} origin-left`}
               />
-              
+
               <div className="h-full p-8 rounded-xl bg-gray-900/50 border border-gray-800 hover:border-cyan-500/50 transition-all duration-300 backdrop-blur-sm">
                 <motion.div
                   whileHover={{ rotate: 360, scale: 1.1 }}
@@ -153,25 +153,40 @@ export default function About() {
           className="rounded-xl bg-gradient-to-br from-gray-900/80 to-black/80 border border-gray-800 p-8 md:p-12 backdrop-blur-sm"
         >
           <h3 className="text-3xl mb-8 text-center bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">
-            Professional Experience
+            Achievements & Certifications
           </h3>
-          
+
           <div className="space-y-8">
             {[
               {
-                year: '2024 - Present',
-                role: 'Senior Full-Stack Developer',
-                company: 'Tech Innovations Inc.',
+                year: '2025',
+                role: 'Eureka! 2025 Zonal Rounds Shortlist',
+                company: 'E-Cell, IIT Bombay',
               },
               {
-                year: '2022 - 2024',
-                role: 'Security Engineer',
-                company: 'CyberSafe Solutions',
+                year: '2025',
+                role: 'Smart India Hackathon (SIH) Shortlist',
+                company: 'Internal Round Selection',
               },
               {
-                year: '2020 - 2022',
-                role: 'Full-Stack Developer',
-                company: 'Digital Ventures',
+                year: '2025',
+                role: 'Mastering DSA using C/C++',
+                company: 'Udemy Certification',
+              },
+              {
+                year: '2025',
+                role: 'Deep Learning Specialization',
+                company: 'NVIDIA Certification',
+              },
+              {
+                year: '2024',
+                role: 'ReactJS Masterclass',
+                company: 'Udemy Certification',
+              },
+              {
+                year: '2024',
+                role: 'Completion Of C++ Training',
+                company: 'IIT Bombay Certification',
               },
             ].map((exp, index) => (
               <motion.div
