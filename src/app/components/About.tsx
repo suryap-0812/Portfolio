@@ -49,10 +49,10 @@ export default function About() {
     <section
       id="about"
       ref={ref}
-      className="min-h-screen py-20 px-6 bg-gradient-to-b from-black via-gray-950 to-black relative overflow-hidden"
+      className="min-h-screen py-20 px-6 bg-gray-50 dark:bg-gradient-to-b dark:from-black dark:via-gray-950 dark:to-black relative overflow-hidden transition-colors duration-300"
     >
       {/* Background grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-10" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-[0.5] dark:opacity-10" />
 
       {/* Sword slash decoration */}
       <svg className="absolute top-0 right-0 w-full h-full opacity-10" viewBox="0 0 1000 1000">
@@ -89,7 +89,7 @@ export default function About() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-purple-600 mx-auto mb-8"
           />
-          <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
             I'm a passionate developer with a strong foundation in full-stack web development, data structures, and algorithms.
             Dedicated to building robust applications and continuously learning new technologies.
           </p>
@@ -118,18 +118,18 @@ export default function About() {
                 className={`absolute -top-1 left-0 right-0 h-px bg-gradient-to-r ${skill.color} origin-left`}
               />
 
-              <div className="h-full p-8 rounded-xl bg-gray-900/50 border border-gray-800 hover:border-cyan-500/50 transition-all duration-300 backdrop-blur-sm">
+              <div className="h-full p-8 rounded-xl bg-white dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800 hover:border-cyan-400 dark:hover:border-cyan-500/50 transition-all duration-300 backdrop-blur-sm shadow-sm hover:shadow-md dark:shadow-none">
                 <motion.div
-                  whileHover={{ rotate: 360, scale: 1.1 }}
-                  transition={{ duration: 0.6 }}
+                  whileHover={{ scale: 1.15 }}
+                  transition={{ duration: 0.2, ease: "easeOut" }}
                   className={`w-16 h-16 mb-6 rounded-xl bg-gradient-to-br ${skill.color} p-3 shadow-lg`}
                 >
                   <skill.icon className="w-full h-full text-white" />
                 </motion.div>
-                <h3 className="text-xl mb-3 text-cyan-400">
+                <h3 className="text-xl mb-3 text-cyan-600 dark:text-cyan-400">
                   {skill.title}
                 </h3>
-                <p className="text-gray-400">
+                <p className="text-gray-600 dark:text-gray-400">
                   {skill.description}
                 </p>
               </div>
@@ -150,7 +150,7 @@ export default function About() {
           initial={{ opacity: 0, y: 50 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.6, delay: 0.8 }}
-          className="rounded-xl bg-gradient-to-br from-gray-900/80 to-black/80 border border-gray-800 p-8 md:p-12 backdrop-blur-sm"
+          className="rounded-xl bg-white/80 dark:bg-gradient-to-br dark:from-gray-900/80 dark:to-black/80 border border-gray-200 dark:border-gray-800 p-8 md:p-12 backdrop-blur-sm shadow-sm dark:shadow-none"
         >
           <h3 className="text-3xl mb-8 text-center bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">
             Achievements & Certifications
@@ -194,18 +194,22 @@ export default function About() {
                 initial={{ opacity: 0, x: -30 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ duration: 0.5, delay: 1 + index * 0.15 }}
-                whileHover={{ x: 10 }}
+                whileHover={{
+                  x: 30,
+                  scale: 1.03,
+                  transition: { duration: 0.2, ease: "easeOut" }
+                }}
                 className="flex items-start gap-6 group cursor-pointer"
               >
-                <div className="flex-shrink-0 w-32 text-cyan-400">
+                <div className="flex-shrink-0 w-32 text-cyan-600 dark:text-cyan-400 font-medium">
                   {exp.year}
                 </div>
-                <div className="flex-1 relative pl-6 border-l-2 border-gray-700 group-hover:border-cyan-500 transition-colors">
+                <div className="flex-1 relative pl-6 border-l-2 border-gray-300 dark:border-gray-700 group-hover:border-cyan-500 transition-colors">
                   <div className="absolute left-0 top-2 w-4 h-4 -translate-x-[9px] rounded-full bg-cyan-500 group-hover:scale-150 transition-transform shadow-lg shadow-cyan-500/50" />
-                  <h4 className="text-xl mb-1 text-gray-200">
+                  <h4 className="text-xl mb-1 text-gray-900 dark:text-gray-200">
                     {exp.role}
                   </h4>
-                  <p className="text-gray-400">
+                  <p className="text-gray-600 dark:text-gray-400">
                     {exp.company}
                   </p>
                 </div>

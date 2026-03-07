@@ -39,10 +39,10 @@ export default function Work() {
     <section
       id="work"
       ref={ref}
-      className="min-h-screen py-20 px-6 bg-black relative overflow-hidden"
+      className="min-h-screen py-20 px-6 bg-gray-50 dark:bg-black relative overflow-hidden transition-colors duration-300"
     >
       {/* Background grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-10" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-[0.5] dark:opacity-10" />
 
       {/* Diagonal slash decorations */}
       <svg className="absolute inset-0 w-full h-full opacity-10" viewBox="0 0 1000 1000">
@@ -91,7 +91,7 @@ export default function Work() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-purple-600 mx-auto mb-8"
           />
-          <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
             A collection of projects showcasing web development, security, and infrastructure expertise
           </p>
         </motion.div>
@@ -111,7 +111,7 @@ export default function Work() {
               whileHover={{ y: -10 }}
               onHoverStart={() => setHoveredIndex(index)}
               onHoverEnd={() => setHoveredIndex(null)}
-              className="group relative overflow-hidden rounded-xl bg-gray-900 border border-gray-800 hover:border-cyan-500/50 transition-all duration-300 shadow-lg hover:shadow-2xl"
+              className="group relative overflow-hidden rounded-xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 hover:border-cyan-400 dark:hover:border-cyan-500/50 transition-all duration-300 shadow-sm hover:shadow-md dark:shadow-lg dark:hover:shadow-2xl"
             >
               {/* Top slash effect */}
               <motion.div
@@ -179,10 +179,10 @@ export default function Work() {
 
               {/* Project Info */}
               <div className="p-6">
-                <h3 className="text-2xl mb-3 text-gray-100">
+                <h3 className="text-2xl mb-3 text-gray-900 dark:text-gray-100">
                   {project.title}
                 </h3>
-                <p className="text-gray-400 mb-4">
+                <p className="text-gray-600 dark:text-gray-400 mb-4">
                   {project.description}
                 </p>
 
@@ -198,7 +198,7 @@ export default function Work() {
                         delay: index * 0.1 + tagIndex * 0.05,
                       }}
                       whileHover={{ scale: 1.1 }}
-                      className="px-3 py-1 text-sm rounded-full bg-gray-800 text-gray-300 border border-gray-700 hover:border-cyan-500/50 transition-colors"
+                      className="px-3 py-1 text-sm rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 hover:border-cyan-400 dark:hover:border-cyan-500/50 transition-colors"
                     >
                       {tag}
                     </motion.span>

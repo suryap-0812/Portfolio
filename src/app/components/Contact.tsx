@@ -47,10 +47,10 @@ export default function Contact() {
     <section
       id="contact"
       ref={ref}
-      className="min-h-screen py-20 px-6 bg-gradient-to-b from-black via-gray-950 to-black relative overflow-hidden"
+      className="min-h-screen py-20 px-6 bg-gray-50 dark:bg-gradient-to-b dark:from-black dark:via-gray-950 dark:to-black relative overflow-hidden transition-colors duration-300"
     >
       {/* Background grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-10" />
+      <div className="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-[0.5] dark:opacity-10" />
 
       {/* Animated slash decorations */}
       <svg className="absolute inset-0 w-full h-full opacity-10" viewBox="0 0 1000 1000">
@@ -99,7 +99,7 @@ export default function Contact() {
             transition={{ duration: 0.6, delay: 0.2 }}
             className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-purple-600 mx-auto mb-8"
           />
-          <p className="text-lg md:text-xl text-gray-400 max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
             Have a project in mind? Let's work together to create something amazing
           </p>
         </motion.div>
@@ -113,10 +113,10 @@ export default function Contact() {
             className="space-y-8"
           >
             <div>
-              <h3 className="text-3xl mb-6 text-cyan-400">
+              <h3 className="text-3xl mb-6 text-cyan-600 dark:text-cyan-400">
                 Let's Connect
               </h3>
-              <p className="text-gray-400 mb-8">
+              <p className="text-gray-600 dark:text-gray-400 mb-8">
                 I'm always interested in hearing about new projects and
                 opportunities. Whether you have a question or just want to say
                 hi, I'll try my best to get back to you!
@@ -133,7 +133,7 @@ export default function Contact() {
                   animate={isInView ? { opacity: 1, x: 0 } : {}}
                   transition={{ duration: 0.5, delay: 0.3 + index * 0.1 }}
                   whileHover={{ x: 10 }}
-                  className="relative flex items-center gap-4 p-6 rounded-xl bg-gray-900/50 border border-gray-800 hover:border-cyan-500/50 transition-all duration-300 group backdrop-blur-sm overflow-hidden"
+                  className="relative flex items-center gap-4 p-6 rounded-xl bg-white dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800 hover:border-cyan-400 dark:hover:border-cyan-500/50 transition-all duration-300 group backdrop-blur-sm shadow-sm dark:shadow-none overflow-hidden"
                 >
                   {/* Slash effect */}
                   <motion.div
@@ -152,8 +152,8 @@ export default function Contact() {
                   </motion.div>
 
                   <div>
-                    <p className="text-sm text-gray-500">{info.title}</p>
-                    <p className="text-lg text-gray-300 group-hover:text-cyan-400 transition-colors">
+                    <p className="text-sm text-gray-500 dark:text-gray-500">{info.title}</p>
+                    <p className="text-lg text-gray-900 dark:text-gray-300 group-hover:text-cyan-600 dark:group-hover:text-cyan-400 transition-colors">
                       {info.value}
                     </p>
                   </div>
@@ -166,7 +166,7 @@ export default function Contact() {
               initial={{ opacity: 0, scale: 0.8 }}
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ duration: 0.8, delay: 0.8 }}
-              className="relative h-64 rounded-xl overflow-hidden bg-gradient-to-br from-gray-900 to-black border border-gray-800"
+              className="relative h-64 rounded-xl overflow-hidden bg-white dark:bg-gradient-to-br dark:from-gray-900 dark:to-black border border-gray-200 dark:border-gray-800 shadow-sm dark:shadow-none"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-cyan-500/10 to-purple-600/10" />
               <div className="absolute inset-0 flex items-center justify-center">
@@ -206,9 +206,9 @@ export default function Contact() {
           >
             <form
               onSubmit={handleSubmit}
-              className="p-8 rounded-xl bg-gray-900/50 border border-gray-800 backdrop-blur-sm shadow-xl"
+              className="p-8 rounded-xl bg-white dark:bg-gray-900/50 border border-gray-200 dark:border-gray-800 backdrop-blur-sm shadow-xl"
             >
-              <h3 className="text-2xl mb-6 text-cyan-400">
+              <h3 className="text-2xl mb-6 text-cyan-600 dark:text-cyan-400">
                 Send a Message
               </h3>
 
@@ -221,7 +221,7 @@ export default function Contact() {
                 >
                   <label
                     htmlFor="name"
-                    className="block text-sm mb-2 text-gray-400"
+                    className="block text-sm mb-2 text-gray-600 dark:text-gray-400"
                   >
                     Name
                   </label>
@@ -233,7 +233,7 @@ export default function Contact() {
                       setFormData({ ...formData, name: e.target.value })
                     }
                     required
-                    className="w-full px-4 py-3 rounded-lg bg-black border border-gray-800 focus:border-cyan-500 focus:outline-none transition-colors text-gray-100"
+                    className="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-black border border-gray-200 dark:border-gray-800 focus:border-cyan-500 focus:outline-none transition-colors text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-600"
                     placeholder="Your name"
                   />
                 </motion.div>
@@ -246,7 +246,7 @@ export default function Contact() {
                 >
                   <label
                     htmlFor="email"
-                    className="block text-sm mb-2 text-gray-400"
+                    className="block text-sm mb-2 text-gray-600 dark:text-gray-400"
                   >
                     Email
                   </label>
@@ -258,7 +258,7 @@ export default function Contact() {
                       setFormData({ ...formData, email: e.target.value })
                     }
                     required
-                    className="w-full px-4 py-3 rounded-lg bg-black border border-gray-800 focus:border-cyan-500 focus:outline-none transition-colors text-gray-100"
+                    className="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-black border border-gray-200 dark:border-gray-800 focus:border-cyan-500 focus:outline-none transition-colors text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-600"
                     placeholder="your.email@example.com"
                   />
                 </motion.div>
@@ -271,7 +271,7 @@ export default function Contact() {
                 >
                   <label
                     htmlFor="message"
-                    className="block text-sm mb-2 text-gray-400"
+                    className="block text-sm mb-2 text-gray-600 dark:text-gray-400"
                   >
                     Message
                   </label>
@@ -283,7 +283,7 @@ export default function Contact() {
                     }
                     required
                     rows={6}
-                    className="w-full px-4 py-3 rounded-lg bg-black border border-gray-800 focus:border-cyan-500 focus:outline-none transition-colors resize-none text-gray-100"
+                    className="w-full px-4 py-3 rounded-lg bg-gray-50 dark:bg-black border border-gray-200 dark:border-gray-800 focus:border-cyan-500 focus:outline-none transition-colors resize-none text-gray-900 dark:text-gray-100 placeholder-gray-400 dark:placeholder-gray-600"
                     placeholder="Tell me about your project..."
                   />
                 </motion.div>

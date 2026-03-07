@@ -6,12 +6,16 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden"
-      style={{
-        background:
-          'radial-gradient(ellipse 80% 70% at 50% 110%, #1a0533 0%, #0a1628 40%, #050d1a 100%)',
-      }}
+      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white dark:bg-transparent transition-colors duration-300"
     >
+      {/* Dark mode gradient background */}
+      <div
+        className="absolute inset-0 hidden dark:block"
+        style={{
+          background:
+            'radial-gradient(ellipse 80% 70% at 50% 110%, #1a0533 0%, #0a1628 40%, #050d1a 100%)',
+        }}
+      />
       {/* Dot-grid background */}
       <div
         className="absolute inset-0 opacity-25"
@@ -75,34 +79,34 @@ export default function Hero() {
         <motion.div
           animate={{ y: [0, -8, 0] }}
           transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
-          className="bg-[#0d1829]/90 backdrop-blur-sm border border-cyan-500/20 rounded-xl p-5 shadow-2xl shadow-black/50 font-mono text-sm w-52"
+          className="bg-gray-50/90 dark:bg-[#0d1829]/90 backdrop-blur-sm border border-gray-200 dark:border-cyan-500/20 rounded-xl p-5 shadow-2xl dark:shadow-black/50 font-mono text-sm w-52"
         >
-          <div className="text-cyan-400 mb-1">
-            <span className="text-purple-400">const</span>{' '}
-            <span className="text-cyan-300">dev</span>{' '}
-            <span className="text-white">=</span>{' '}
-            <span className="text-white">{'{'}</span>
+          <div className="text-cyan-600 dark:text-cyan-400 mb-1">
+            <span className="text-purple-600 dark:text-purple-400">const</span>{' '}
+            <span className="text-cyan-700 dark:text-cyan-300">dev</span>{' '}
+            <span className="text-gray-900 dark:text-white">=</span>{' '}
+            <span className="text-gray-900 dark:text-white">{'{'}</span>
           </div>
           <div className="pl-4 space-y-0.5">
             <div>
-              <span className="text-blue-300">name</span>
-              <span className="text-white">: </span>
-              <span className="text-green-400">"Surya"</span>
-              <span className="text-white">,</span>
+              <span className="text-blue-600 dark:text-blue-300">name</span>
+              <span className="text-gray-900 dark:text-white">: </span>
+              <span className="text-green-600 dark:text-green-400">"Surya"</span>
+              <span className="text-gray-900 dark:text-white">,</span>
             </div>
             <div>
-              <span className="text-blue-300">role</span>
-              <span className="text-white">: </span>
-              <span className="text-green-400">"FullStack"</span>
-              <span className="text-white">,</span>
+              <span className="text-blue-600 dark:text-blue-300">role</span>
+              <span className="text-gray-900 dark:text-white">: </span>
+              <span className="text-green-600 dark:text-green-400">"FullStack"</span>
+              <span className="text-gray-900 dark:text-white">,</span>
             </div>
             <div>
-              <span className="text-blue-300">status</span>
-              <span className="text-white">: </span>
-              <span className="text-green-400">"Open2Work"</span>
+              <span className="text-blue-600 dark:text-blue-300">status</span>
+              <span className="text-gray-900 dark:text-white">: </span>
+              <span className="text-green-600 dark:text-green-400">"Open2Work"</span>
             </div>
           </div>
-          <div className="text-white mt-1">{'};'}</div>
+          <div className="text-gray-900 dark:text-white mt-1">{'};'}</div>
         </motion.div>
       </motion.div>
 
@@ -116,7 +120,7 @@ export default function Hero() {
         <motion.div
           animate={{ y: [0, 8, 0] }}
           transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut', delay: 1 }}
-          className="bg-[#0d1829]/90 backdrop-blur-sm border border-cyan-500/20 rounded-xl p-5 shadow-2xl shadow-black/50 font-mono text-sm w-52"
+          className="bg-gray-50/90 dark:bg-[#0d1829]/90 backdrop-blur-sm border border-gray-200 dark:border-cyan-500/20 rounded-xl p-5 shadow-2xl dark:shadow-black/50 font-mono text-sm w-52"
         >
           {/* Window controls */}
           <div className="flex gap-1.5 mb-3">
@@ -125,11 +129,11 @@ export default function Hero() {
             <div className="w-3 h-3 rounded-full bg-green-500" />
           </div>
           <div className="space-y-1 text-sm">
-            <div className="text-gray-300">npm install</div>
-            <div className="text-gray-300">success</div>
+            <div className="text-gray-800 dark:text-gray-300">npm install</div>
+            <div className="text-gray-800 dark:text-gray-300">success</div>
             <div>
-              <span className="text-gray-400">...</span>
-              <span className="text-green-400">completed</span>
+              <span className="text-gray-500 dark:text-gray-400">...</span>
+              <span className="text-green-600 dark:text-green-400">completed</span>
             </div>
           </div>
         </motion.div>
@@ -143,7 +147,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.7, delay: 3.3 }}
-          className="text-3xl md:text-4xl text-gray-200 mb-2"
+          className="text-3xl md:text-4xl text-gray-700 dark:text-gray-200 mb-2"
           style={{ fontFamily: 'Georgia, serif' }}
         >
           Hello, I'm
@@ -170,7 +174,7 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.7, delay: 3.7 }}
-          className="text-xl md:text-2xl text-gray-300 mb-4"
+          className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 mb-4"
         >
           Aspiring Full-Stack Developer &amp; Software Engineer
         </motion.h2>
@@ -194,7 +198,7 @@ export default function Hero() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 0.7, delay: 3.95 }}
-          className="text-gray-400 mb-10"
+          className="text-gray-500 dark:text-gray-400 mb-10"
         >
           Creating secure, scalable applications with modern technologies
         </motion.p>
@@ -219,10 +223,10 @@ export default function Hero() {
               transition={{ duration: 0.4, delay: 4.1 + i * 0.1 }}
               whileHover={{ scale: 1.15, y: -4 }}
               whileTap={{ scale: 0.9 }}
-              className="p-3 rounded-xl bg-[#0d1829]/80 border border-cyan-500/20 hover:border-cyan-400/50 shadow-lg transition-all duration-300"
+              className="p-3 rounded-xl bg-gray-100/80 dark:bg-[#0d1829]/80 border border-gray-200 dark:border-cyan-500/20 hover:border-cyan-400/50 shadow-lg transition-all duration-300"
               aria-label={s.label}
             >
-              <s.icon className="w-5 h-5 text-cyan-400" />
+              <s.icon className="w-5 h-5 text-cyan-500 dark:text-cyan-400" />
             </motion.a>
           ))}
         </motion.div>
@@ -246,7 +250,7 @@ export default function Hero() {
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
             whileHover={{ scale: 1.05, borderColor: '#22d3ee' }}
             whileTap={{ scale: 0.97 }}
-            className="px-8 py-3.5 rounded-xl border border-gray-600 text-gray-200 font-semibold hover:text-cyan-400 hover:bg-cyan-500/5 transition-all duration-300"
+            className="px-8 py-3.5 rounded-xl border border-gray-400 dark:border-gray-600 text-gray-700 dark:text-gray-200 font-semibold hover:text-cyan-500 dark:hover:text-cyan-400 hover:bg-cyan-50 dark:hover:bg-cyan-500/5 transition-all duration-300"
           >
             Get In Touch
           </motion.button>
@@ -262,7 +266,7 @@ export default function Hero() {
             y: { duration: 2, repeat: Infinity, ease: 'easeInOut' },
           }}
           aria-label="Navigate to about page"
-          className="text-gray-400 hover:text-cyan-400 transition-colors"
+          className="text-gray-400 hover:text-cyan-500 dark:hover:text-cyan-400 transition-colors"
         >
           <ArrowDown className="w-7 h-7" />
         </motion.button>

@@ -2,3 +2,6 @@
 @source '../**/*.{js,ts,jsx,tsx}';
 
 @import 'tw-animate-css';
+
+/* Enable class-based dark mode strategy */
+@custom-variant dark (&:where(.dark, .dark *));
