@@ -7,6 +7,7 @@ import About from './components/About';
 import Work from './components/Work';
 import Contact from './components/Contact';
 import CustomCursor from './components/CustomCursor';
+import MarqueeBar from './components/MarqueeBar';
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -30,8 +31,10 @@ export default function App() {
         <Navigation />
         <main>
           <Hero />
+          <MarqueeBar />
           <About />
           <Work />
+          <MarqueeBar />
           <Contact />
         </main>
       </div>
