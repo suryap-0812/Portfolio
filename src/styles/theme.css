@@ -1,4 +1,4 @@
-@custom-variant dark (&:is(.dark *));
+/* @custom-variant dark is declared in tailwind.css — do not duplicate it here */
 
 :root {
   --font-size: 16px;
@@ -124,9 +124,8 @@
     @apply border-border outline-ring/50;
   }
 
-  body {
-    @apply bg-background text-foreground;
-  }
+  /* body bg/color are set by tailwind.css — do NOT override here */
+  /* body { @apply bg-background text-foreground; } */
 
   /**
   * Default typography styles for HTML elements (h1-h4, p, label, button, input).

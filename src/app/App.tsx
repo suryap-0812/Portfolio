@@ -6,32 +6,27 @@ import Hero from './components/Hero';
 import About from './components/About';
 import Work from './components/Work';
 import Contact from './components/Contact';
+import CustomCursor from './components/CustomCursor';
 
 export default function App() {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const savedTheme = localStorage.getItem('theme');
-    if (savedTheme === 'light') {
-      document.documentElement.classList.remove('dark');
-    } else {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    }
-  }, []);
-
-  useEffect(() => {
-    const timer = setTimeout(() => setIsLoading(false), 3000);
+    const timer = setTimeout(() => setIsLoading(false), 2800);
     return () => clearTimeout(timer);
   }, []);
 
   return (
     <>
+      <CustomCursor />
       <AnimatePresence mode="wait">
         {isLoading && <LoadingScreen key="loading" />}
       </AnimatePresence>
 
-      <div className="min-h-screen bg-gray-50 dark:bg-black text-gray-900 dark:text-gray-100 transition-colors duration-300">
+      <div
+        className="min-h-screen text-[#fafaf9] overflow-x-hidden"
+        style={{ background: '#0e0c0a' }}
+      >
         <Navigation />
         <main>
           <Hero />

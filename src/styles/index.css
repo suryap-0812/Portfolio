@@ -1,3 +1,9 @@
+/* 
+  Main CSS entry point.
+  - tailwind.css  → Tailwind v4 + design tokens + all animations + global body styles
+  - theme.css     → Radix/shadcn color variables (for UI components only)
+  - fonts.css     → empty; fonts are loaded via <link> in index.html
+*/
 @import './fonts.css';
 @import './tailwind.css';
 @import './theme.css';

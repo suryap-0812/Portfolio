@@ -2,221 +2,188 @@ import { motion, useInView } from 'motion/react';
 import { useRef, useState } from 'react';
 import { ExternalLink, Github } from 'lucide-react';
 import { ImageWithFallback } from './figma/ImageWithFallback';
+import ParticleCanvas from './ParticleCanvas';
 
-export default function Work() {
-  const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: '-100px' });
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+const PROJECTS = [
+  {
+    title: 'Tribetask',
+    sub: 'Ongoing',
+    desc: 'A real-time collaborative task management platform enabling users to form "Tribes" and manage shared tasks efficiently across teams.',
+    image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0YXNrJTIwbWFuYWdlbWVudHxlbnwxfHx8fDE3NzIxNjY4MTF8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    tags: ['ReactJS', 'NodeJS', 'WebSockets', 'PostgreSQL'],
+    accent: '#f59e0b',
+  },
+  {
+    title: 'Athlixir',
+    sub: 'Sports Platform',
+    desc: 'A responsive web application for athlete performance tracking, training management, and sports event participation.',
+    image: 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzcG9ydHN8ZW58MXx8fDE3NzIxNjY4MTF8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    tags: ['ReactJS', 'NodeJS', 'MongoDB', 'TailwindCSS'],
+    accent: '#e07c5c',
+  },
+  {
+    title: 'Price Snapshot',
+    sub: 'Price Tracker',
+    desc: 'A full-stack web app to track and compare product prices across multiple vendors with lowest-price reports and alerts.',
+    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsZWRnZXJ8ZW58MXx8fDE3NzIxNjY4MTF8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    tags: ['Spring Boot', 'MySQL', 'Thymeleaf', 'Maven'],
+    accent: '#fcd34d',
+  },
+];
 
-  const projects = [
-    {
-      title: 'Tribetask (Ongoing)',
-      description:
-        'A real-time collaborative task management platform enabling users to form "Tribes" and manage shared tasks efficiently.',
-      image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0YXNrJTIwbWFuYWdlbWVudHxlbnwxfHx8fDE3NzIxNjY4MTF8MA&ixlib=rb-4.1.0&q=80&w=1080',
-      tags: ['ReactJS', 'NodeJS', 'Tailwind', 'WebSockets', 'PostgreSQL'],
-      gradient: 'from-cyan-500 to-blue-600',
-    },
-    {
-      title: 'Athlixir Website',
-      description:
-        'A responsive web application for athlete performance tracking, training management, and streamlined sports event participation.',
-      image: 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzcG9ydHN8ZW58MXx8fDE3NzIxNjY4MTF8MA&ixlib=rb-4.1.0&q=80&w=1080',
-      tags: ['ReactJS', 'NodeJS', 'Tailwind', 'MongoDB'],
-      gradient: 'from-blue-500 to-purple-600',
-    },
-    {
-      title: 'Price Comparison Snapshot',
-      description:
-        'A full-stack web application to track and compare product prices across multiple vendors with lowest-price reports.',
-      image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsZWRnZXJ8ZW58MXx8fDE3NzIxNjY4MTF8MA&ixlib=rb-4.1.0&q=80&w=1080',
-      tags: ['Spring Boot', 'MySQL', 'Thymeleaf', 'Maven'],
-      gradient: 'from-cyan-500 to-purple-600',
-    },
-  ];
+function Card3D({ project, index, inView }: { project: typeof PROJECTS[0]; index: number; inView: boolean }) {
+  const [tilt, setTilt] = useState({ x: 0, y: 0 });
+  const [sheen, setSheen] = useState({ x: 50, y: 50 });
+  const [hovered, setHovered] = useState(false);
+  const cardRef = useRef<HTMLDivElement>(null);
+
+  const onMouseMove = (e: React.MouseEvent) => {
+    const r = cardRef.current!.getBoundingClientRect();
+    const mx = (e.clientX - r.left) / r.width;
+    const my = (e.clientY - r.top) / r.height;
+    setTilt({ x: (my - 0.5) * -12, y: (mx - 0.5) * 12 });
+    setSheen({ x: mx * 100, y: my * 100 });
+  };
 
   return (
-    <section
-      id="work"
-      ref={ref}
-      className="min-h-screen py-20 px-6 bg-gray-50 dark:bg-black relative overflow-hidden transition-colors duration-300"
+    <motion.div
+      ref={cardRef}
+      initial={{ opacity: 0, y: 60 }}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ delay: index * 0.13, duration: 0.7, ease: [0.23, 1, 0.32, 1] }}
+      onMouseMove={onMouseMove}
+      onMouseEnter={() => setHovered(true)}
+      onMouseLeave={() => { setTilt({ x: 0, y: 0 }); setHovered(false); }}
+      className="card-3d relative group rounded-2xl overflow-hidden"
+      style={{
+        transform: `perspective(900px) rotateX(${tilt.x}deg) rotateY(${tilt.y}deg)`,
+        boxShadow: hovered
+          ? `0 28px 70px rgba(0,0,0,0.55), 0 0 35px ${project.accent}20`
+          : '0 8px 32px rgba(0,0,0,0.4)',
+        border: `1px solid ${hovered ? project.accent + '35' : 'rgba(245,158,11,0.06)'}`,
+        transition: 'box-shadow 0.4s, border 0.4s',
+        background: '#1e1a16',
+        cursor: 'none',
+      }}
     >
-      {/* Background grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#e2e8f0_1px,transparent_1px),linear-gradient(to_bottom,#e2e8f0_1px,transparent_1px)] dark:bg-[linear-gradient(to_right,#1e293b_1px,transparent_1px),linear-gradient(to_bottom,#1e293b_1px,transparent_1px)] bg-[size:4rem_4rem] opacity-[0.5] dark:opacity-10" />
+      {/* Glassmorphism torch sheen */}
+      <div className="absolute inset-0 pointer-events-none z-20 rounded-2xl" style={{
+        background: hovered
+          ? `radial-gradient(circle at ${sheen.x}% ${sheen.y}%, rgba(255,255,255,0.055) 0%, transparent 58%)`
+          : 'none',
+        transition: 'background 0.05s',
+      }} />
 
-      {/* Diagonal slash decorations */}
-      <svg className="absolute inset-0 w-full h-full opacity-10" viewBox="0 0 1000 1000">
-        <motion.path
-          d="M 0 300 L 300 0"
-          stroke="url(#workGradient1)"
-          strokeWidth="2"
-          initial={{ pathLength: 0 }}
-          animate={isInView ? { pathLength: 1 } : {}}
-          transition={{ duration: 1.5, ease: 'easeInOut' }}
-        />
-        <motion.path
-          d="M 1000 700 L 700 1000"
-          stroke="url(#workGradient2)"
-          strokeWidth="2"
-          initial={{ pathLength: 0 }}
-          animate={isInView ? { pathLength: 1 } : {}}
-          transition={{ duration: 1.5, delay: 0.2, ease: 'easeInOut' }}
-        />
-        <defs>
-          <linearGradient id="workGradient1" x1="0%" y1="100%" x2="100%" y2="0%">
-            <stop offset="0%" stopColor="#06b6d4" />
-            <stop offset="100%" stopColor="#8b5cf6" />
-          </linearGradient>
-          <linearGradient id="workGradient2" x1="100%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="#8b5cf6" />
-            <stop offset="100%" stopColor="#06b6d4" />
-          </linearGradient>
-        </defs>
-      </svg>
+      {/* Diagonal gloss sweep */}
+      <div className="absolute inset-0 pointer-events-none z-10 overflow-hidden rounded-2xl">
+        <div className="absolute w-[2px] h-[200%] -rotate-[12deg] transition-[left] duration-700"
+          style={{
+            left: hovered ? '115%' : '-20%', top: '-50%',
+            background: 'linear-gradient(to bottom, transparent, rgba(255,255,255,0.12), transparent)',
+            filter: 'blur(1px)',
+          }} />
+      </div>
 
-      <div className="relative max-w-7xl mx-auto">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl md:text-6xl mb-4 bg-gradient-to-r from-cyan-400 to-purple-600 bg-clip-text text-transparent">
-            Featured Work
-          </h2>
-          <motion.div
-            initial={{ scaleX: 0 }}
-            animate={isInView ? { scaleX: 1 } : {}}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="w-24 h-1 bg-gradient-to-r from-cyan-500 to-purple-600 mx-auto mb-8"
-          />
-          <p className="text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-3xl mx-auto">
-            A collection of projects showcasing web development, security, and infrastructure expertise
-          </p>
-        </motion.div>
+      {/* Image */}
+      <div className="relative h-52 overflow-hidden">
+        <div className="w-full h-full transition-transform duration-500"
+          style={{ transform: hovered ? 'scale(1.06)' : 'scale(1)' }}>
+          <ImageWithFallback src={project.image} alt={project.title} className="w-full h-full object-cover" />
+        </div>
+        <div className="absolute inset-0 transition-opacity duration-300"
+          style={{ background: `linear-gradient(to bottom, ${project.accent}10, rgba(30,26,22,0.9))` }} />
 
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => (
-            <motion.div
-              key={project.title}
-              initial={{ opacity: 0, y: 50 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{
-                duration: 0.6,
-                delay: index * 0.1,
-                ease: 'easeOut',
-              }}
-              whileHover={{ y: -10 }}
-              onHoverStart={() => setHoveredIndex(index)}
-              onHoverEnd={() => setHoveredIndex(null)}
-              className="group relative overflow-hidden rounded-xl bg-white dark:bg-gray-900 border border-gray-200 dark:border-gray-800 hover:border-cyan-400 dark:hover:border-cyan-500/50 transition-all duration-300 shadow-sm hover:shadow-md dark:shadow-lg dark:hover:shadow-2xl"
-            >
-              {/* Top slash effect */}
-              <motion.div
-                initial={{ scaleX: 0 }}
-                animate={hoveredIndex === index ? { scaleX: 1 } : { scaleX: 0 }}
-                transition={{ duration: 0.3 }}
-                className={`absolute top-0 left-0 right-0 h-px bg-gradient-to-r ${project.gradient} origin-left z-10`}
-              />
+        {/* Hover buttons */}
+        <div className="absolute inset-0 flex items-center justify-center gap-4 transition-opacity duration-300"
+          style={{ opacity: hovered ? 1 : 0, background: `${project.accent}10` }}>
+          <motion.a href="#" whileHover={{ scale: 1.2, rotate: 5 }} whileTap={{ scale: 0.9 }}
+            className="p-3 rounded-lg text-white"
+            style={{ background: 'rgba(255,255,255,0.12)', backdropFilter: 'blur(6px)', border: '1px solid rgba(255,255,255,0.18)' }}
+            aria-label="View live"><ExternalLink size={22} /></motion.a>
+          <motion.a href="#" whileHover={{ scale: 1.2, rotate: -5 }} whileTap={{ scale: 0.9 }}
+            className="p-3 rounded-lg text-white"
+            style={{ background: 'rgba(255,255,255,0.12)', backdropFilter: 'blur(6px)', border: '1px solid rgba(255,255,255,0.18)' }}
+            aria-label="View code"><Github size={22} /></motion.a>
+        </div>
+      </div>
 
-              {/* Project Image */}
-              <div className="relative h-64 overflow-hidden">
-                <motion.div
-                  animate={{
-                    scale: hoveredIndex === index ? 1.1 : 1,
-                  }}
-                  transition={{ duration: 0.4 }}
-                  className="w-full h-full"
-                >
-                  <ImageWithFallback
-                    src={project.image}
-                    alt={project.title}
-                    className="w-full h-full object-cover"
-                  />
-                </motion.div>
+      {/* Info */}
+      <div className="relative p-7 z-10">
+        <div className="absolute right-5 top-4 font-display text-5xl select-none pointer-events-none transition-opacity duration-300"
+          style={{ color: project.accent, opacity: hovered ? 0.09 : 0.03 }}>{String(index + 1).padStart(2, '0')}</div>
 
-                {/* Overlay */}
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{
-                    opacity: hoveredIndex === index ? 1 : 0,
-                  }}
-                  transition={{ duration: 0.3 }}
-                  className={`absolute inset-0 bg-gradient-to-br ${project.gradient} opacity-90 flex items-center justify-center gap-4`}
-                >
-                  <motion.a
-                    href="#"
-                    initial={{ scale: 0 }}
-                    animate={
-                      hoveredIndex === index ? { scale: 1 } : { scale: 0 }
-                    }
-                    transition={{ duration: 0.3, delay: 0.1 }}
-                    whileHover={{ scale: 1.2, rotate: 5 }}
-                    whileTap={{ scale: 0.9 }}
-                    className="p-3 rounded-lg bg-white/20 backdrop-blur-sm text-white"
-                    aria-label="View project"
-                  >
-                    <ExternalLink size={24} />
-                  </motion.a>
-                  <motion.a
-                    href="#"
-                    initial={{ scale: 0 }}
-                    animate={
-                      hoveredIndex === index ? { scale: 1 } : { scale: 0 }
-                    }
-                    transition={{ duration: 0.3, delay: 0.15 }}
-                    whileHover={{ scale: 1.2, rotate: -5 }}
-                    whileTap={{ scale: 0.9 }}
-                    className="p-3 rounded-lg bg-white/20 backdrop-blur-sm text-white"
-                    aria-label="View code"
-                  >
-                    <Github size={24} />
-                  </motion.a>
-                </motion.div>
-              </div>
+        <p className="font-mono text-[0.56rem] tracking-[0.18em] uppercase mb-2"
+          style={{ color: project.accent + 'aa' }}>// {project.sub}</p>
 
-              {/* Project Info */}
-              <div className="p-6">
-                <h3 className="text-2xl mb-3 text-gray-900 dark:text-gray-100">
-                  {project.title}
-                </h3>
-                <p className="text-gray-600 dark:text-gray-400 mb-4">
-                  {project.description}
-                </p>
+        <h3 className="font-display tracking-wide text-2xl mb-3 transition-colors duration-300"
+          style={{ color: hovered ? project.accent : '#fafaf9' }}>{project.title}</h3>
 
-                {/* Tags */}
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag, tagIndex) => (
-                    <motion.span
-                      key={tag}
-                      initial={{ opacity: 0, scale: 0 }}
-                      animate={isInView ? { opacity: 1, scale: 1 } : {}}
-                      transition={{
-                        duration: 0.3,
-                        delay: index * 0.1 + tagIndex * 0.05,
-                      }}
-                      whileHover={{ scale: 1.1 }}
-                      className="px-3 py-1 text-sm rounded-full bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 border border-gray-200 dark:border-gray-700 hover:border-cyan-400 dark:hover:border-cyan-500/50 transition-colors"
-                    >
-                      {tag}
-                    </motion.span>
-                  ))}
-                </div>
-              </div>
+        <p className="font-body text-sm mb-5 leading-7" style={{ color: '#a8a29e' }}>{project.desc}</p>
 
-              {/* Bottom slash */}
-              <motion.div
-                initial={{ scaleX: 0 }}
-                animate={hoveredIndex === index ? { scaleX: 1 } : { scaleX: 0 }}
-                transition={{ duration: 0.3 }}
-                className={`absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r ${project.gradient} origin-right`}
-              />
-            </motion.div>
+        <div className="flex flex-wrap gap-2">
+          {project.tags.map(tag => (
+            <span key={tag} className="px-3 py-1 rounded-full font-mono text-[0.55rem] tracking-[0.12em] uppercase"
+              style={{ border: `1px solid ${project.accent}22`, color: 'rgba(168,162,158,0.7)', background: 'transparent' }}>
+              {tag}
+            </span>
           ))}
         </div>
       </div>
+
+      {/* Bottom neon line */}
+      <div className="absolute bottom-0 left-0 right-0 h-px transition-opacity duration-300"
+        style={{
+          background: `linear-gradient(90deg, transparent, ${project.accent}, transparent)`,
+          opacity: hovered ? 1 : 0.15,
+        }} />
+    </motion.div>
+  );
+}
+
+export default function Work() {
+  const ref = useRef<HTMLDivElement>(null);
+  const inView = useInView(ref, { once: true, margin: '-80px' });
+
+  return (
+    <section id="work" ref={ref} className="relative min-h-screen py-36 px-6 overflow-hidden"
+      style={{ background: '#0e0c0a' }}>
+
+      <ParticleCanvas section="work" />
+
+      {/* Ghost BG text */}
+      <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none" style={{ zIndex: 0 }}>
+        <span className="font-display" style={{ fontSize: 'clamp(10rem, 22vw, 20rem)', color: 'rgba(245,158,11,0.022)', lineHeight: 1 }}>
+          WORK
+        </span>
+      </div>
+
+      <div className="relative z-10 max-w-6xl mx-auto">
+        <motion.div initial={{ opacity: 0, y: 40 }} animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.7 }} className="text-center mb-20">
+          <p className="font-mono text-[0.6rem] tracking-[0.42em] uppercase mb-4"
+            style={{ color: 'rgba(245,158,11,0.55)' }}>// Featured Projects</p>
+          <h2 className="font-display tracking-wide leading-[1.1] mb-6"
+            style={{
+              fontSize: 'clamp(2.4rem, 5vw, 3.8rem)',
+              background: 'linear-gradient(135deg, #fafaf9, #e07c5c)',
+              WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
+            }}>
+            Selected Work
+          </h2>
+          <p className="font-body text-base max-w-2xl mx-auto" style={{ color: '#a8a29e', lineHeight: 2 }}>
+            A collection of projects built with care — real-world solutions, shipped with intention.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {PROJECTS.map((p, i) => (
+            <Card3D key={p.title} project={p} index={i} inView={inView} />
+          ))}
+        </div>
+      </div>
+
+      <div className="absolute bottom-0 left-0 right-0 h-px"
+        style={{ background: 'linear-gradient(90deg, transparent, rgba(245,158,11,0.3), rgba(224,124,92,0.3), transparent)' }} />
     </section>
   );
 }
