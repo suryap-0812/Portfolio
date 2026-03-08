@@ -20,12 +20,12 @@ export default function LoadingScreen() {
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
       className="fixed inset-0 z-[100] flex items-center justify-center overflow-hidden"
-      style={{ background: '#0e0c0a' }}
+      style={{ background: '#020617' }}
     >
       {/* Subtle warm grid */}
       <div className="absolute inset-0 opacity-10"
         style={{
-          backgroundImage: 'linear-gradient(to right, rgba(245,158,11,0.15) 1px, transparent 1px), linear-gradient(to bottom, rgba(245,158,11,0.15) 1px, transparent 1px)',
+          backgroundImage: 'linear-gradient(to right, rgba(56, 189, 248,0.15) 1px, transparent 1px), linear-gradient(to bottom, rgba(56, 189, 248,0.15) 1px, transparent 1px)',
           backgroundSize: '4rem 4rem',
           maskImage: 'radial-gradient(ellipse 60% 50% at 50% 50%, #000 70%, transparent 100%)',
         }}
@@ -49,19 +49,19 @@ export default function LoadingScreen() {
             variants={slashVariants}
             initial="hidden"
             animate="visible"
-            filter="url(#warmGlow)"
+            filter="url(#blueGlow)"
           />
         ))}
         <defs>
           <linearGradient id="g1" x1="0%" y1="0%" x2="100%" y2="100%">
-            <stop offset="0%" stopColor="#f59e0b" />
-            <stop offset="100%" stopColor="#e07c5c" />
+            <stop offset="0%" stopColor="#38bdf8" />
+            <stop offset="100%" stopColor="#3b82f6" />
           </linearGradient>
           <linearGradient id="g2" x1="100%" y1="0%" x2="0%" y2="100%">
-            <stop offset="0%" stopColor="#e07c5c" />
-            <stop offset="100%" stopColor="#fcd34d" />
+            <stop offset="0%" stopColor="#3b82f6" />
+            <stop offset="100%" stopColor="#7dd3fc" />
           </linearGradient>
-          <filter id="warmGlow">
+          <filter id="blueGlow">
             <feGaussianBlur stdDeviation="5" result="coloredBlur" />
             <feMerge>
               <feMergeNode in="coloredBlur" />
@@ -84,14 +84,14 @@ export default function LoadingScreen() {
               animate={{ rotate: 360 }}
               transition={{ duration: 3, repeat: Infinity, ease: 'linear' }}
               className="absolute inset-0 rounded-full blur-xl opacity-50"
-              style={{ background: 'linear-gradient(135deg, #f59e0b, #e07c5c)' }}
+              style={{ background: 'linear-gradient(135deg, #38bdf8, #3b82f6)' }}
             />
             <div className="relative p-6 rounded-full"
               style={{
-                background: 'linear-gradient(135deg, #f59e0b, #e07c5c)',
-                boxShadow: '0 0 30px rgba(245,158,11,0.4)',
+                background: 'linear-gradient(135deg, #38bdf8, #3b82f6)',
+                boxShadow: '0 0 30px rgba(56, 189, 248,0.4)',
               }}>
-              <Code2 className="w-12 h-12" style={{ color: '#0e0c0a' }} />
+              <Code2 className="w-12 h-12" style={{ color: '#020617' }} />
             </div>
           </div>
         </motion.div>
@@ -103,7 +103,7 @@ export default function LoadingScreen() {
         >
           <h1 className="font-display text-4xl md:text-5xl mb-6"
             style={{
-              background: 'linear-gradient(135deg, #fcd34d, #f59e0b, #e07c5c)',
+              background: 'linear-gradient(135deg, #7dd3fc, #38bdf8, #3b82f6)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
             }}>
@@ -117,14 +117,14 @@ export default function LoadingScreen() {
           animate={{ opacity: 1 }}
           transition={{ delay: 1.8 }}
           className="mt-8 w-64 h-1 mx-auto rounded-full overflow-hidden"
-          style={{ background: 'rgba(245,158,11,0.12)' }}
+          style={{ background: 'rgba(56, 189, 248,0.12)' }}
         >
           <motion.div
             initial={{ width: '0%' }}
             animate={{ width: '100%' }}
             transition={{ duration: 2, delay: 1.8, ease: 'easeInOut' }}
             className="h-full"
-            style={{ background: 'linear-gradient(90deg, #f59e0b, #e07c5c, #fcd34d)' }}
+            style={{ background: 'linear-gradient(90deg, #38bdf8, #3b82f6, #7dd3fc)' }}
           />
         </motion.div>
       </div>
@@ -149,7 +149,7 @@ export default function LoadingScreen() {
               delay: Math.random() * 2,
             }}
             className="absolute w-1 h-1 rounded-full"
-            style={{ background: i % 2 === 0 ? '#f59e0b' : '#e07c5c' }}
+            style={{ background: i % 2 === 0 ? '#38bdf8' : '#3b82f6' }}
           />
         ))}
       </div>

@@ -70,17 +70,17 @@ export default function MarqueeBar() {
         <div
             className="relative overflow-hidden py-4 select-none"
             style={{
-                background: 'rgba(22,18,16,0.75)',
-                borderTop: '1px solid rgba(245,158,11,0.08)',
-                borderBottom: '1px solid rgba(245,158,11,0.08)',
+                background: 'rgba(15, 23, 42,0.75)',
+                borderTop: '1px solid rgba(56, 189, 248,0.08)',
+                borderBottom: '1px solid rgba(56, 189, 248,0.08)',
                 backdropFilter: 'blur(8px)',
             }}
         >
             {/* ─── Fade edges ─── */}
             <div className="absolute left-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
-                style={{ background: 'linear-gradient(to right, #0e0c0a, transparent)' }} />
+                style={{ background: 'linear-gradient(to right, #020617, transparent)' }} />
             <div className="absolute right-0 top-0 bottom-0 w-24 z-10 pointer-events-none"
-                style={{ background: 'linear-gradient(to left, #0e0c0a, transparent)' }} />
+                style={{ background: 'linear-gradient(to left, #020617, transparent)' }} />
 
             {/* ─── Scrolling track ─── */}
             <div ref={trackRef} className="flex whitespace-nowrap will-change-transform">
@@ -91,7 +91,7 @@ export default function MarqueeBar() {
 
                 {Array.from({ length: copies }).map((_, i) => (
                     <span key={i} className="font-mono text-sm tracking-[0.12em] flex-shrink-0"
-                        style={{ color: i % 2 === 0 ? 'rgba(245,158,11,0.6)' : 'rgba(168,162,158,0.35)' }}>
+                        style={{ color: i % 2 === 0 ? 'rgba(56, 189, 248,0.6)' : 'rgba(148, 163, 184,0.35)' }}>
                         {TEXT}
                     </span>
                 ))}

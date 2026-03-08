@@ -11,7 +11,7 @@ const PROJECTS = [
     desc: 'A real-time collaborative task management platform enabling users to form "Tribes" and manage shared tasks efficiently across teams.',
     image: 'https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0YXNrJTIwbWFuYWdlbWVudHxlbnwxfHx8fDE3NzIxNjY4MTF8MA&ixlib=rb-4.1.0&q=80&w=1080',
     tags: ['ReactJS', 'NodeJS', 'WebSockets', 'PostgreSQL'],
-    accent: '#f59e0b',
+    accent: '#38bdf8',
   },
   {
     title: 'Athlixir',
@@ -19,7 +19,7 @@ const PROJECTS = [
     desc: 'A responsive web application for athlete performance tracking, training management, and streamlined sports event participation.',
     image: 'https://images.unsplash.com/photo-1461896836934-ffe607ba8211?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxzcG9ydHN8ZW58MXx8fDE3NzIxNjY4MTF8MA&ixlib=rb-4.1.0&q=80&w=1080',
     tags: ['ReactJS', 'NodeJS', 'MongoDB', 'TailwindCSS'],
-    accent: '#e07c5c',
+    accent: '#3b82f6',
   },
   {
     title: 'Price Snapshot',
@@ -27,7 +27,7 @@ const PROJECTS = [
     desc: 'A full-stack web app to track and compare product prices across multiple vendors with lowest-price reports and alerts.',
     image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsZWRnZXJ8ZW58MXx8fDE3NzIxNjY4MTF8MA&ixlib=rb-4.1.0&q=80&w=1080',
     tags: ['Spring Boot', 'MySQL', 'Thymeleaf', 'Maven'],
-    accent: '#fcd34d',
+    accent: '#7dd3fc',
   },
 ];
 
@@ -103,7 +103,7 @@ function ProjectCard({ project, index, inView }: { project: typeof PROJECTS[0]; 
           : '0 8px 32px rgba(0,0,0,0.4)',
         border: '1px solid transparent',
         transition: 'box-shadow 0.4s',
-        background: '#1e1a16',
+        background: '#1e293b',
         cursor: 'none',
       }}
     >
@@ -140,7 +140,7 @@ function ProjectCard({ project, index, inView }: { project: typeof PROJECTS[0]; 
 
         {/* Gradient overlay */}
         <div className="absolute inset-0"
-          style={{ background: `linear-gradient(to bottom, ${project.accent}10, rgba(30,26,22,0.9))` }} />
+          style={{ background: `linear-gradient(to bottom, ${project.accent}10, rgba(30, 41, 59,0.9))` }} />
 
         {/* Grain texture overlay fades in at 8% on hover */}
         <GrainOverlay opacity={hovered ? 0.08 : 0} />
@@ -172,7 +172,7 @@ function ProjectCard({ project, index, inView }: { project: typeof PROJECTS[0]; 
         {/* Title slides up 8px + letter-spacing increases on hover */}
         <h3 className="font-display tracking-wide text-2xl mb-3"
           style={{
-            color: hovered ? project.accent : '#fafaf9',
+            color: hovered ? project.accent : '#f8fafc',
             transform: hovered ? 'translateY(-8px)' : 'translateY(0)',
             letterSpacing: hovered ? '0.03em' : '0',
             transition: 'color 0.3s, transform 0.35s ease, letter-spacing 0.35s ease',
@@ -180,12 +180,12 @@ function ProjectCard({ project, index, inView }: { project: typeof PROJECTS[0]; 
           {project.title}
         </h3>
 
-        <p className="font-body text-sm mb-5 leading-7" style={{ color: '#a8a29e' }}>{project.desc}</p>
+        <p className="font-body text-sm mb-5 leading-7" style={{ color: '#94a3b8' }}>{project.desc}</p>
 
         <div className="flex flex-wrap gap-2">
           {project.tags.map(tag => (
             <span key={tag} className="px-3 py-1 rounded-full font-mono text-[0.55rem] tracking-[0.12em] uppercase"
-              style={{ border: `1px solid ${project.accent}22`, color: 'rgba(168,162,158,0.7)' }}>
+              style={{ border: `1px solid ${project.accent}22`, color: 'rgba(148, 163, 184,0.7)' }}>
               {tag}
             </span>
           ))}
@@ -213,7 +213,7 @@ export default function Work() {
 
   return (
     <section id="work" ref={ref} className="relative min-h-screen py-36 px-6 overflow-hidden"
-      style={{ background: '#0e0c0a' }}>
+      style={{ background: '#020617' }}>
 
       <motion.div className="absolute inset-0 will-change-transform" style={{ y: bgY }}>
         <ParticleCanvas section="work" />
@@ -222,7 +222,7 @@ export default function Work() {
       {/* Ghost WORK */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none select-none z-0">
         <span className="font-display"
-          style={{ fontSize: 'clamp(10rem, 22vw, 20rem)', color: 'rgba(245,158,11,0.022)', lineHeight: 1 }}>
+          style={{ fontSize: 'clamp(10rem, 22vw, 20rem)', color: 'rgba(56, 189, 248,0.022)', lineHeight: 1 }}>
           WORK
         </span>
       </div>
@@ -235,7 +235,7 @@ export default function Work() {
               initial={{ y: '100%' }} animate={inView ? { y: '0%' } : {}}
               transition={{ duration: 0.6, ease: [0.76, 0, 0.24, 1] }}
               className="font-mono text-[0.6rem] tracking-[0.42em] uppercase"
-              style={{ color: 'rgba(245,158,11,0.55)' }}>
+              style={{ color: 'rgba(56, 189, 248,0.55)' }}>
               // Featured Projects
             </motion.p>
           </div>
@@ -246,7 +246,7 @@ export default function Work() {
               className="font-display tracking-wide leading-[1.1]"
               style={{
                 fontSize: 'clamp(2.4rem, 5vw, 3.8rem)',
-                background: 'linear-gradient(135deg, #fafaf9, #e07c5c)',
+                background: 'linear-gradient(135deg, #f8fafc, #3b82f6)',
                 WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
               }}>
               Selected Work
@@ -257,7 +257,7 @@ export default function Work() {
               initial={{ y: '100%' }} animate={inView ? { y: '0%' } : {}}
               transition={{ duration: 0.6, delay: 0.16, ease: [0.76, 0, 0.24, 1] }}
               className="font-body text-base max-w-2xl mx-auto"
-              style={{ color: '#a8a29e', lineHeight: 2 }}>
+              style={{ color: '#94a3b8', lineHeight: 2 }}>
               A collection of projects built with care — real-world solutions, shipped with intention.
             </motion.p>
           </div>
@@ -271,7 +271,7 @@ export default function Work() {
       </div>
 
       <div className="absolute bottom-0 left-0 right-0 h-px"
-        style={{ background: 'linear-gradient(90deg, transparent, rgba(245,158,11,0.3), rgba(224,124,92,0.3), transparent)' }} />
+        style={{ background: 'linear-gradient(90deg, transparent, rgba(56, 189, 248,0.3), rgba(59, 130, 246,0.3), transparent)' }} />
     </section>
   );
 }

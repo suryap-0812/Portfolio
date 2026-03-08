@@ -21,18 +21,18 @@ export default function CustomCursor() {
             r.style.width = '80px';
             r.style.height = '80px';
             r.style.background = 'rgba(255,255,255,0.10)';
-            r.style.borderColor = 'rgba(245,158,11,0.6)';
+            r.style.borderColor = 'rgba(56, 189, 248,0.6)';
             r.style.borderWidth = '1.5px';
         } else if (state === 'click') {
             r.style.width = '96px';
             r.style.height = '96px';
-            r.style.background = 'rgba(245,158,11,0.12)';
-            r.style.borderColor = 'rgba(245,158,11,0.9)';
+            r.style.background = 'rgba(56, 189, 248,0.12)';
+            r.style.borderColor = 'rgba(56, 189, 248,0.9)';
         } else {
             r.style.width = '40px';
             r.style.height = '40px';
             r.style.background = 'transparent';
-            r.style.borderColor = 'rgba(245,158,11,0.40)';
+            r.style.borderColor = 'rgba(56, 189, 248,0.40)';
             r.style.borderWidth = '1.5px';
         }
     }, []);
@@ -126,12 +126,12 @@ export default function CustomCursor() {
                 style={{
                     position: 'fixed',
                     width: 12, height: 12,
-                    background: '#f59e0b',
+                    background: '#38bdf8',
                     borderRadius: '50%',
                     pointerEvents: 'none',
                     zIndex: 9999,
                     transform: 'translate(-50%,-50%)',
-                    boxShadow: '0 0 8px rgba(245,158,11,0.6)',
+                    boxShadow: '0 0 8px rgba(56, 189, 248,0.6)',
                     transition: 'transform 0.15s cubic-bezier(0.76,0,0.24,1)',
                     willChange: 'transform, left, top',
                 }}
@@ -142,7 +142,7 @@ export default function CustomCursor() {
                 style={{
                     position: 'fixed',
                     width: 40, height: 40,
-                    border: '1.5px solid rgba(245,158,11,0.4)',
+                    border: '1.5px solid rgba(56, 189, 248,0.4)',
                     borderRadius: '50%',
                     pointerEvents: 'none',
                     zIndex: 9998,

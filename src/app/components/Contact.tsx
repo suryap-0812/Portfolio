@@ -61,7 +61,7 @@ function ShimmerBlock() {
   return (
     <div
       className="relative w-full h-40 rounded-2xl overflow-hidden flex items-center justify-center mb-8"
-      style={{ background: '#1e1a16', border: '1px solid rgba(245,158,11,0.1)' }}
+      style={{ background: '#1e293b', border: '1px solid rgba(56, 189, 248,0.1)' }}
     >
       {/* Diagonal shimmer — light sweep every 2.5s */}
       <div
@@ -85,14 +85,14 @@ function ShimmerBlock() {
         onClick={() => { }}
       >
         <div className="absolute inset-0 rounded-full"
-          style={{ background: 'linear-gradient(135deg, #f59e0b, #e07c5c)', boxShadow: '0 0 22px rgba(245,158,11,0.35)' }} />
-        <svg className="relative z-10 ml-1" width="20" height="20" viewBox="0 0 24 24" fill="#0e0c0a">
+          style={{ background: 'linear-gradient(135deg, #38bdf8, #3b82f6)', boxShadow: '0 0 22px rgba(56, 189, 248,0.35)' }} />
+        <svg className="relative z-10 ml-1" width="20" height="20" viewBox="0 0 24 24" fill="#020617">
           <polygon points="5,3 19,12 5,21" />
         </svg>
       </motion.button>
 
       <p className="absolute bottom-3 left-0 right-0 text-center font-mono text-[0.55rem] tracking-[0.2em] uppercase"
-        style={{ color: 'rgba(168,162,158,0.35)' }}>// Demo Showreel</p>
+        style={{ color: 'rgba(148, 163, 184,0.35)' }}>// Demo Showreel</p>
     </div>
   );
 }
@@ -116,17 +116,17 @@ function ScrambleCTA() {
       <svg className="absolute inset-0 w-full h-full rounded-xl pointer-events-none" style={{ overflow: 'visible' }}>
         <rect x="1" y="1" width="calc(100% - 2px)" height="calc(100% - 2px)"
           rx="12" ry="12" fill="none"
-          stroke="#f59e0b" strokeWidth="1.5"
+          stroke="#38bdf8" strokeWidth="1.5"
           strokeDasharray="1000" strokeDashoffset={hovered ? 0 : 1000}
           style={{ transition: hovered ? 'stroke-dashoffset 0.5s ease' : 'stroke-dashoffset 0.25s ease' }}
         />
       </svg>
 
       <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-        style={{ background: 'rgba(245,158,11,0.05)' }} />
+        style={{ background: 'rgba(56, 189, 248,0.05)' }} />
 
-      <Send className="w-4 h-4 relative z-10" style={{ color: '#f59e0b' }} />
-      <span className="relative z-10 font-mono" style={{ color: '#fafaf9', minWidth: '8ch', display: 'inline-block' }}>
+      <Send className="w-4 h-4 relative z-10" style={{ color: '#38bdf8' }} />
+      <span className="relative z-10 font-mono" style={{ color: '#f8fafc', minWidth: '8ch', display: 'inline-block' }}>
         {display}
       </span>
     </motion.a>
@@ -156,25 +156,25 @@ export default function Contact() {
   };
 
   const inputStyle: React.CSSProperties = {
-    background: 'rgba(30,26,22,0.75)',
-    border: '1px solid rgba(245,158,11,0.1)',
-    color: '#fafaf9',
+    background: 'rgba(30, 41, 59,0.75)',
+    border: '1px solid rgba(56, 189, 248,0.1)',
+    color: '#f8fafc',
     outline: 'none',
     fontFamily: '"Playpen Sans Arabic", sans-serif',
     transition: 'border-color 0.3s, box-shadow 0.3s',
   };
   const onFocus = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    e.currentTarget.style.borderColor = 'rgba(245,158,11,0.4)';
-    e.currentTarget.style.boxShadow = '0 0 18px rgba(245,158,11,0.07)';
+    e.currentTarget.style.borderColor = 'rgba(56, 189, 248,0.4)';
+    e.currentTarget.style.boxShadow = '0 0 18px rgba(56, 189, 248,0.07)';
   };
   const onBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    e.currentTarget.style.borderColor = 'rgba(245,158,11,0.1)';
+    e.currentTarget.style.borderColor = 'rgba(56, 189, 248,0.1)';
     e.currentTarget.style.boxShadow = 'none';
   };
 
   return (
     <section id="contact" ref={ref} className="relative min-h-screen py-36 px-6 overflow-hidden"
-      style={{ background: '#161210' }}>
+      style={{ background: '#0f172a' }}>
 
       <motion.div className="absolute inset-0 will-change-transform" style={{ y: bgY }}>
         <ParticleCanvas section="contact" />
@@ -186,19 +186,19 @@ export default function Contact() {
           { right: '20%', rotate: '3deg' },
         ].map((b, i) => (
           <div key={i} className="absolute top-0 bottom-0 w-px opacity-20"
-            style={{ ...b, background: 'linear-gradient(to bottom, transparent, rgba(245,158,11,0.07) 40%, rgba(224,124,92,0.06) 70%, transparent)', borderStyle: 'none' }} />
+            style={{ ...b, background: 'linear-gradient(to bottom, transparent, rgba(56, 189, 248,0.07) 40%, rgba(59, 130, 246,0.06) 70%, transparent)', borderStyle: 'none' }} />
         ))}
       </div>
 
       <div className="absolute top-0 left-0 right-0 h-px"
-        style={{ background: 'linear-gradient(90deg, transparent, rgba(245,158,11,0.3), rgba(224,124,92,0.25), transparent)' }} />
+        style={{ background: 'linear-gradient(90deg, transparent, rgba(56, 189, 248,0.3), rgba(59, 130, 246,0.25), transparent)' }} />
 
       <div className="relative z-10 max-w-6xl mx-auto">
 
         {/* Header — line wipes */}
         <div className="text-center mb-20">
           {[
-            { content: '// Contact', delay: 0, style: { fontFamily: '"Fira Code", monospace', fontSize: '0.6rem', letterSpacing: '0.42em', textTransform: 'uppercase' as const, color: 'rgba(245,158,11,0.55)' } },
+            { content: '// Contact', delay: 0, style: { fontFamily: '"Fira Code", monospace', fontSize: '0.6rem', letterSpacing: '0.42em', textTransform: 'uppercase' as const, color: 'rgba(56, 189, 248,0.55)' } },
           ].map((l, i) => (
             <div key={i} className="overflow-hidden mb-2">
               <motion.p initial={{ y: '100%' }} animate={inView ? { y: '0%' } : {}}
@@ -211,7 +211,7 @@ export default function Contact() {
             <motion.h2 initial={{ y: '100%' }} animate={inView ? { y: '0%' } : {}}
               transition={{ duration: 0.65, delay: 0.08, ease: [0.76, 0, 0.24, 1] }}
               className="font-display tracking-wide leading-[1.1]"
-              style={{ fontSize: 'clamp(2.4rem, 5vw, 3.8rem)', background: 'linear-gradient(135deg, #fafaf9, #f59e0b)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+              style={{ fontSize: 'clamp(2.4rem, 5vw, 3.8rem)', background: 'linear-gradient(135deg, #f8fafc, #38bdf8)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
               Let's Build Something
             </motion.h2>
           </div>
@@ -219,14 +219,14 @@ export default function Contact() {
             <motion.h2 initial={{ y: '100%' }} animate={inView ? { y: '0%' } : {}}
               transition={{ duration: 0.65, delay: 0.16, ease: [0.76, 0, 0.24, 1] }}
               className="font-display tracking-wide leading-[1.15]"
-              style={{ fontSize: 'clamp(2.4rem, 5vw, 3.8rem)', background: 'linear-gradient(135deg, #f59e0b, #e07c5c)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', animation: 'warm-shimmer 4s linear infinite' }}>
+              style={{ fontSize: 'clamp(2.4rem, 5vw, 3.8rem)', background: 'linear-gradient(135deg, #38bdf8, #3b82f6)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', animation: 'blue-shimmer 4s linear infinite' }}>
               Extraordinary
             </motion.h2>
           </div>
           <div className="overflow-hidden">
             <motion.p initial={{ y: '100%' }} animate={inView ? { y: '0%' } : {}}
               transition={{ duration: 0.6, delay: 0.24, ease: [0.76, 0, 0.24, 1] }}
-              className="font-body text-base max-w-xl mx-auto" style={{ color: '#a8a29e', lineHeight: 2 }}>
+              className="font-body text-base max-w-xl mx-auto" style={{ color: '#94a3b8', lineHeight: 2 }}>
               Have a project in mind? I'd love to hear about it. Let's create something meaningful together.
             </motion.p>
           </div>
@@ -237,8 +237,8 @@ export default function Contact() {
           {/* ─── Left info ─── */}
           <motion.div initial={{ opacity: 0, x: -50 }} animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ delay: 0.28, duration: 0.7 }} className="space-y-5">
-            <h3 className="font-display tracking-wide text-2xl mb-5" style={{ color: '#fafaf9' }}>Let's Connect</h3>
-            <p className="font-body text-base mb-6" style={{ color: '#a8a29e', lineHeight: 2 }}>
+            <h3 className="font-display tracking-wide text-2xl mb-5" style={{ color: '#f8fafc' }}>Let's Connect</h3>
+            <p className="font-body text-base mb-6" style={{ color: '#94a3b8', lineHeight: 2 }}>
               I'm always open to new opportunities, collaborations, and interesting conversations.
               Whether you have a question or just want to say hi — my inbox is always open.
             </p>
@@ -252,19 +252,19 @@ export default function Contact() {
                 transition={{ delay: 0.35 + i * 0.1, duration: 0.5 }}
                 whileHover={{ x: 8 }}
                 className="group flex items-center gap-4 p-5 rounded-xl relative overflow-hidden"
-                style={{ background: 'rgba(22,18,16,0.6)', border: '1px solid rgba(245,158,11,0.08)', cursor: 'none' }}
-                onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(245,158,11,0.26)'; (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(245,158,11,0.04)'; }}
-                onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(245,158,11,0.08)'; (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(22,18,16,0.6)'; }}
+                style={{ background: 'rgba(15, 23, 42,0.6)', border: '1px solid rgba(56, 189, 248,0.08)', cursor: 'none' }}
+                onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(56, 189, 248,0.26)'; (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(56, 189, 248,0.04)'; }}
+                onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(56, 189, 248,0.08)'; (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(15, 23, 42,0.6)'; }}
               >
                 <div className="w-11 h-11 rounded-lg flex items-center justify-center flex-shrink-0"
-                  style={{ background: 'rgba(245,158,11,0.09)', border: '1px solid rgba(245,158,11,0.2)' }}>
-                  <info.icon className="w-5 h-5" style={{ color: '#f59e0b' }} />
+                  style={{ background: 'rgba(56, 189, 248,0.09)', border: '1px solid rgba(56, 189, 248,0.2)' }}>
+                  <info.icon className="w-5 h-5" style={{ color: '#38bdf8' }} />
                 </div>
                 <div>
                   <p className="font-mono text-[0.56rem] tracking-[0.16em] uppercase mb-0.5"
-                    style={{ color: 'rgba(168,162,158,0.38)' }}>// {info.label}</p>
-                  <p className="font-body font-medium text-base transition-colors duration-300 group-hover:text-[#f59e0b]"
-                    style={{ color: '#fafaf9' }}>{info.value}</p>
+                    style={{ color: 'rgba(148, 163, 184,0.38)' }}>// {info.label}</p>
+                  <p className="font-body font-medium text-base transition-colors duration-300 group-hover:text-[#38bdf8]"
+                    style={{ color: '#f8fafc' }}>{info.value}</p>
                 </div>
               </motion.a>
             ))}
@@ -277,8 +277,8 @@ export default function Contact() {
           <motion.div initial={{ opacity: 0, x: 50 }} animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ delay: 0.35, duration: 0.7 }}>
             <form onSubmit={handleSubmit} className="p-8 rounded-2xl space-y-6"
-              style={{ background: 'rgba(22,18,16,0.55)', border: '1px solid rgba(245,158,11,0.08)', backdropFilter: 'blur(10px)' }}>
-              <h3 className="font-display tracking-wide text-2xl mb-2" style={{ color: '#fafaf9' }}>Send a Message</h3>
+              style={{ background: 'rgba(15, 23, 42,0.55)', border: '1px solid rgba(56, 189, 248,0.08)', backdropFilter: 'blur(10px)' }}>
+              <h3 className="font-display tracking-wide text-2xl mb-2" style={{ color: '#f8fafc' }}>Send a Message</h3>
 
               {[
                 { id: 'c-name', type: 'text', label: 'Your Name', ph: 'Surya P', val: form.name, key: 'name' as const },
@@ -286,22 +286,22 @@ export default function Contact() {
               ].map(f => (
                 <div key={f.id}>
                   <label htmlFor={f.id} className="block font-mono text-[0.56rem] tracking-[0.18em] uppercase mb-2"
-                    style={{ color: 'rgba(168,162,158,0.45)' }}>// {f.label}</label>
+                    style={{ color: 'rgba(148, 163, 184,0.45)' }}>// {f.label}</label>
                   <input type={f.type} id={f.id} required
                     value={f.val} onChange={e => setForm({ ...form, [f.key]: e.target.value })}
                     placeholder={f.ph}
-                    className="w-full px-4 py-3 rounded-xl text-sm placeholder-[#3f3a36]"
+                    className="w-full px-4 py-3 rounded-xl text-sm placeholder-[#334155]"
                     style={inputStyle} onFocus={onFocus} onBlur={onBlur} />
                 </div>
               ))}
 
               <div>
                 <label htmlFor="c-msg" className="block font-mono text-[0.56rem] tracking-[0.18em] uppercase mb-2"
-                  style={{ color: 'rgba(168,162,158,0.45)' }}>// Message</label>
+                  style={{ color: 'rgba(148, 163, 184,0.45)' }}>// Message</label>
                 <textarea id="c-msg" required rows={5}
                   value={form.message} onChange={e => setForm({ ...form, message: e.target.value })}
                   placeholder="Tell me about your project..."
-                  className="w-full px-4 py-3 rounded-xl text-sm resize-none placeholder-[#3f3a36]"
+                  className="w-full px-4 py-3 rounded-xl text-sm resize-none placeholder-[#334155]"
                   style={inputStyle as React.CSSProperties}
                   onFocus={onFocus as React.FocusEventHandler<HTMLTextAreaElement>}
                   onBlur={onBlur as React.FocusEventHandler<HTMLTextAreaElement>} />
@@ -311,14 +311,14 @@ export default function Contact() {
                 whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
                 className="w-full py-4 rounded-xl font-body font-semibold text-sm relative overflow-hidden group flex items-center justify-center gap-2 disabled:opacity-60"
                 style={{
-                  background: sent ? 'linear-gradient(135deg, #86efac, #22c55e)' : 'linear-gradient(135deg, #f59e0b, #e07c5c)',
-                  boxShadow: '0 0 28px rgba(245,158,11,0.22)',
-                  color: '#0e0c0a', transition: 'background 0.4s', cursor: 'none',
+                  background: sent ? 'linear-gradient(135deg, #86efac, #22c55e)' : 'linear-gradient(135deg, #38bdf8, #3b82f6)',
+                  boxShadow: '0 0 28px rgba(56, 189, 248,0.22)',
+                  color: '#020617', transition: 'background 0.4s', cursor: 'none',
                 }}>
                 <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  style={{ background: 'linear-gradient(135deg, #fcd34d, #f59e0b)' }} />
+                  style={{ background: 'linear-gradient(135deg, #7dd3fc, #38bdf8)' }} />
                 {sending ? (
-                  <motion.div className="relative z-10 w-5 h-5 border-2 border-[#0e0c0a] border-t-transparent rounded-full"
+                  <motion.div className="relative z-10 w-5 h-5 border-2 border-[#020617] border-t-transparent rounded-full"
                     animate={{ rotate: 360 }} transition={{ duration: 1, repeat: Infinity, ease: 'linear' }} />
                 ) : sent ? (
                   <span className="relative z-10">✓ Message Sent!</span>
@@ -336,7 +336,7 @@ export default function Contact() {
           className="mt-24 pt-8 text-center"
           style={{ borderTop: '1px solid rgba(255,255,255,0.04)' }}>
           <p className="font-mono text-[0.6rem] tracking-[0.2em] uppercase"
-            style={{ color: 'rgba(168,162,158,0.28)' }}>
+            style={{ color: 'rgba(148, 163, 184,0.28)' }}>
             © 2025 Surya P &nbsp;·&nbsp; Designed & Built with ♥
           </p>
         </motion.div>

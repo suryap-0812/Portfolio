@@ -56,7 +56,7 @@ function TaglineCycle() {
           exit={{ opacity: 0, y: -6 }}
           transition={{ duration: 0.55, ease: [0.76, 0, 0.24, 1] }}
           className="absolute inset-0 text-center font-body text-lg md:text-xl"
-          style={{ color: '#a8a29e' }}
+          style={{ color: '#94a3b8' }}
         >
           {TAGLINES[idx]}
         </motion.p>
@@ -112,7 +112,7 @@ export default function Hero() {
       id="home"
       ref={heroRef}
       className="relative min-h-screen flex items-center justify-center overflow-hidden"
-      style={{ background: '#0e0c0a' }}
+      style={{ background: '#020617' }}
     >
       {/* ─── Canvas bg moves at 0.4× ─── */}
       <motion.div className="absolute inset-0 will-change-transform" style={{ y: bgY }}>
@@ -121,11 +121,11 @@ export default function Hero() {
 
       {/* Vignette */}
       <div className="absolute inset-0 pointer-events-none z-[1]" style={{
-        background: 'radial-gradient(ellipse 75% 65% at 50% 50%, transparent 0%, rgba(14,12,10,0.55) 70%, rgba(14,12,10,0.96) 100%)',
+        background: 'radial-gradient(ellipse 75% 65% at 50% 50%, transparent 0%, rgba(2, 6, 23,0.55) 70%, rgba(2, 6, 23,0.96) 100%)',
       }} />
       {/* Edge warm glow */}
       <div className="absolute inset-0 pointer-events-none z-[1]" style={{
-        boxShadow: 'inset 0 0 100px rgba(245,158,11,0.05), inset 0 0 50px rgba(224,124,92,0.03)',
+        boxShadow: 'inset 0 0 100px rgba(56, 189, 248,0.05), inset 0 0 50px rgba(59, 130, 246,0.03)',
       }} />
 
       {/* ─── Main content — foreground at 1.0× ─── */}
@@ -135,7 +135,7 @@ export default function Hero() {
         {visible && (
           <LineWipe delay={0}>
             <p className="font-mono text-[0.6rem] tracking-[0.45em] uppercase mb-5"
-              style={{ color: 'rgba(245,158,11,0.55)' }}>
+              style={{ color: 'rgba(56, 189, 248,0.55)' }}>
               // Portfolio 2025
             </p>
           </LineWipe>
@@ -147,13 +147,13 @@ export default function Hero() {
             className="font-display tracking-wide leading-none mb-5"
             style={{
               fontSize: 'clamp(3.8rem, 10vw, 9rem)',
-              background: 'linear-gradient(135deg, #fcd34d 0%, #f59e0b 40%, #e07c5c 80%, #fcd34d 100%)',
+              background: 'linear-gradient(135deg, #7dd3fc 0%, #38bdf8 40%, #3b82f6 80%, #7dd3fc 100%)',
               backgroundSize: '300% 300%',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent',
               backgroundClip: 'text',
-              animation: 'warm-shimmer 6s ease infinite',
-              filter: 'drop-shadow(0 0 32px rgba(245,158,11,0.22))',
+              animation: 'blue-shimmer 6s ease infinite',
+              filter: 'drop-shadow(0 0 32px rgba(56, 189, 248,0.22))',
             }}
           >
             <WordReveal words={HERO_WORDS} delay={0.1} />
@@ -179,10 +179,10 @@ export default function Hero() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.7 }}
             className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-10"
-            style={{ border: '1px solid rgba(245,158,11,0.22)', background: 'rgba(245,158,11,0.06)' }}
+            style={{ border: '1px solid rgba(56, 189, 248,0.22)', background: 'rgba(56, 189, 248,0.06)' }}
           >
-            <span className="w-2 h-2 rounded-full bg-[#f59e0b] anim-warm-pulse" />
-            <span className="font-mono text-[0.62rem] tracking-[0.2em] uppercase text-[#f59e0b]">
+            <span className="w-2 h-2 rounded-full bg-[#38bdf8] anim-blue-pulse" />
+            <span className="font-mono text-[0.62rem] tracking-[0.2em] uppercase text-[#38bdf8]">
               Open to Work
             </span>
           </motion.div>
@@ -200,19 +200,19 @@ export default function Hero() {
             <motion.div
               animate={{ y: [0, -10, 0] }}
               transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut' }}
-              className="glass border-warm rounded-xl p-5 font-mono text-sm w-56 text-left"
+              className="glass border-blue rounded-xl p-5 font-mono text-sm w-56 text-left"
             >
-              <div style={{ color: '#f59e0b' }}>
-                <span style={{ color: '#e07c5c' }}>const</span>{' '}
-                <span style={{ color: '#fcd34d' }}>dev</span>
-                <span style={{ color: '#fafaf9' }}> = {'{'}</span>
+              <div style={{ color: '#38bdf8' }}>
+                <span style={{ color: '#3b82f6' }}>const</span>{' '}
+                <span style={{ color: '#7dd3fc' }}>dev</span>
+                <span style={{ color: '#f8fafc' }}> = {'{'}</span>
               </div>
               <div className="pl-4 space-y-0.5 text-xs">
-                <div><span style={{ color: '#e07c5c' }}>name</span><span style={{ color: '#fafaf9' }}>: </span><span style={{ color: '#fcd34d' }}>"Surya"</span><span style={{ color: '#fafaf9' }}>,</span></div>
-                <div><span style={{ color: '#e07c5c' }}>role</span><span style={{ color: '#fafaf9' }}>: </span><span style={{ color: '#fcd34d' }}>"FullStack"</span><span style={{ color: '#fafaf9' }}>,</span></div>
-                <div><span style={{ color: '#e07c5c' }}>status</span><span style={{ color: '#fafaf9' }}>: </span><span style={{ color: '#86efac' }}>"Open2Work"</span></div>
+                <div><span style={{ color: '#3b82f6' }}>name</span><span style={{ color: '#f8fafc' }}>: </span><span style={{ color: '#7dd3fc' }}>"Surya"</span><span style={{ color: '#f8fafc' }}>,</span></div>
+                <div><span style={{ color: '#3b82f6' }}>role</span><span style={{ color: '#f8fafc' }}>: </span><span style={{ color: '#7dd3fc' }}>"FullStack"</span><span style={{ color: '#f8fafc' }}>,</span></div>
+                <div><span style={{ color: '#3b82f6' }}>status</span><span style={{ color: '#f8fafc' }}>: </span><span style={{ color: '#86efac' }}>"Open2Work"</span></div>
               </div>
-              <div style={{ color: '#fafaf9' }}>{'}'};</div>
+              <div style={{ color: '#f8fafc' }}>{'}'};</div>
             </motion.div>
           </motion.div>
 
@@ -226,17 +226,17 @@ export default function Hero() {
             <motion.div
               animate={{ y: [0, 10, 0] }}
               transition={{ duration: 4.5, repeat: Infinity, ease: 'easeInOut', delay: 1.2 }}
-              className="glass border-warm rounded-xl p-5 font-mono text-sm w-52"
+              className="glass border-blue rounded-xl p-5 font-mono text-sm w-52"
             >
               <div className="flex gap-1.5 mb-3">
                 {['bg-red-400', 'bg-yellow-400', 'bg-green-400'].map(c => (
                   <span key={c} className={`w-3 h-3 rounded-full ${c}`} />
                 ))}
               </div>
-              <div className="space-y-1 text-xs" style={{ color: '#a8a29e' }}>
-                <div><span style={{ color: '#f59e0b' }}>$</span> npm install success</div>
+              <div className="space-y-1 text-xs" style={{ color: '#94a3b8' }}>
+                <div><span style={{ color: '#38bdf8' }}>$</span> npm install success</div>
                 <div><span style={{ color: '#86efac' }}>✓</span> Build complete</div>
-                <div><span style={{ color: '#fcd34d' }}>→</span> Ready_</div>
+                <div><span style={{ color: '#7dd3fc' }}>→</span> Ready_</div>
               </div>
             </motion.div>
           </motion.div>
@@ -261,12 +261,12 @@ export default function Hero() {
               whileHover={{ scale: 1.25, y: -5 }}
               whileTap={{ scale: 0.88 }}
               aria-label={s.label}
-              className="p-3 rounded-xl glass border-warm transition-all duration-300"
+              className="p-3 rounded-xl glass border-blue transition-all duration-300"
               style={{ cursor: 'none' }}
-              onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.boxShadow = '0 0 18px rgba(245,158,11,0.18)'; }}
+              onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.boxShadow = '0 0 18px rgba(56, 189, 248,0.18)'; }}
               onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.boxShadow = 'none'; }}
             >
-              <s.icon className="w-5 h-5" style={{ color: '#a8a29e' }} />
+              <s.icon className="w-5 h-5" style={{ color: '#94a3b8' }} />
             </motion.a>
           ))}
         </motion.div>
@@ -284,14 +284,14 @@ export default function Hero() {
             whileTap={{ scale: 0.96 }}
             className="relative overflow-hidden px-8 py-3.5 rounded-xl font-body font-semibold text-sm group"
             style={{
-              background: 'linear-gradient(135deg, #f59e0b, #e07c5c)',
-              boxShadow: '0 0 28px rgba(245,158,11,0.28)',
-              color: '#0e0c0a',
+              background: 'linear-gradient(135deg, #38bdf8, #3b82f6)',
+              boxShadow: '0 0 28px rgba(56, 189, 248,0.28)',
+              color: '#020617',
               cursor: 'none',
             }}
           >
             <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-              style={{ background: 'linear-gradient(135deg, #fcd34d, #f59e0b)' }} />
+              style={{ background: 'linear-gradient(135deg, #7dd3fc, #38bdf8)' }} />
             <span className="relative z-10">View My Work</span>
           </motion.button>
 
@@ -300,10 +300,10 @@ export default function Hero() {
             whileHover={{ scale: 1.06 }}
             whileTap={{ scale: 0.96 }}
             className="relative overflow-hidden px-8 py-3.5 rounded-xl font-body font-medium text-sm group"
-            style={{ border: '1px solid rgba(245,158,11,0.22)', color: '#fafaf9', background: 'transparent', cursor: 'none' }}
+            style={{ border: '1px solid rgba(56, 189, 248,0.22)', color: '#f8fafc', background: 'transparent', cursor: 'none' }}
           >
             <div className="absolute inset-0 scale-x-0 origin-left group-hover:scale-x-100 transition-transform duration-300"
-              style={{ background: 'rgba(245,158,11,0.07)' }} />
+              style={{ background: 'rgba(56, 189, 248,0.07)' }} />
             <span className="relative z-10">Get In Touch</span>
           </motion.button>
         </motion.div>
@@ -315,8 +315,8 @@ export default function Hero() {
           animate={{ opacity: visible ? 1 : 0, y: [0, 12, 0] }}
           transition={{ opacity: { duration: 0.6, delay: 1 }, y: { duration: 2, repeat: Infinity, ease: 'easeInOut' } }}
           aria-label="Scroll down"
-          style={{ color: 'rgba(168,162,158,0.4)', cursor: 'none' }}
-          className="transition-colors duration-300 hover:text-[#f59e0b]"
+          style={{ color: 'rgba(148, 163, 184,0.4)', cursor: 'none' }}
+          className="transition-colors duration-300 hover:text-[#38bdf8]"
         >
           <ArrowDown className="w-6 h-6" />
         </motion.button>

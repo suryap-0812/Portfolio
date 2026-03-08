@@ -48,9 +48,9 @@ export default function Navigation() {
       transition={{ duration: 0.7, delay: 2.6, ease: 'easeOut' }}
       className="fixed top-0 left-0 right-0 z-50 flex items-center justify-between px-6 py-4"
       style={{
-        background: scrolled ? 'rgba(14,12,10,0.92)' : 'transparent',
+        background: scrolled ? 'rgba(2, 6, 23,0.92)' : 'transparent',
         backdropFilter: scrolled ? 'blur(16px)' : 'none',
-        borderBottom: scrolled ? '1px solid rgba(245,158,11,0.07)' : 'none',
+        borderBottom: scrolled ? '1px solid rgba(56, 189, 248,0.07)' : 'none',
         transition: 'background 0.4s, backdrop-filter 0.4s, border-bottom 0.4s',
       }}
     >
@@ -64,7 +64,7 @@ export default function Navigation() {
       </motion.button>
 
       {/* ─── Desktop pill nav ─── */}
-      <div className="hidden md:flex items-center gap-1 px-3 py-2 rounded-2xl glass border-warm">
+      <div className="hidden md:flex items-center gap-1 px-3 py-2 rounded-2xl glass border-blue">
         {NAV_ITEMS.map((item, i) => {
           const active = activeTab === item.id;
           return (
@@ -77,24 +77,24 @@ export default function Navigation() {
               transition={{ delay: 2.7 + i * 0.07 }}
               className="relative flex flex-col items-center gap-1 px-5 py-2 rounded-xl overflow-hidden transition-all duration-300"
               style={{
-                background: active ? 'rgba(245,158,11,0.09)' : 'transparent',
-                border: active ? '1px solid rgba(245,158,11,0.22)' : '1px solid transparent',
+                background: active ? 'rgba(56, 189, 248,0.09)' : 'transparent',
+                border: active ? '1px solid rgba(56, 189, 248,0.22)' : '1px solid transparent',
               }}
             >
               {ripples.filter(r => r.item === item.id).map(r => (
                 <span key={r.id} className="absolute rounded-full pointer-events-none"
                   style={{
                     left: r.x - 4, top: r.y - 4, width: 8, height: 8,
-                    background: 'rgba(245,158,11,0.7)',
-                    boxShadow: '0 0 10px rgba(245,158,11,0.6)',
+                    background: 'rgba(56, 189, 248,0.7)',
+                    boxShadow: '0 0 10px rgba(56, 189, 248,0.6)',
                     animation: 'ripple-out 0.6s ease-out both',
                   }}
                 />
               ))}
               <item.icon className="w-4 h-4 transition-colors duration-300"
-                style={{ color: active ? '#f59e0b' : '#a8a29e' }} />
+                style={{ color: active ? '#38bdf8' : '#94a3b8' }} />
               <span className="text-[0.58rem] font-mono tracking-[0.12em] uppercase transition-colors duration-300"
-                style={{ color: active ? '#f59e0b' : '#a8a29e' }}>
+                style={{ color: active ? '#38bdf8' : '#94a3b8' }}>
                 {item.label}
               </span>
             </motion.button>
@@ -106,7 +106,7 @@ export default function Navigation() {
       <motion.button
         initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 2.9 }}
         className="md:hidden p-2 transition-colors"
-        style={{ color: '#a8a29e' }}
+        style={{ color: '#94a3b8' }}
         onClick={() => setIsMobile(!isMobile)}
       >
         {isMobile ? <X size={22} /> : <Menu size={22} />}
@@ -119,7 +119,7 @@ export default function Navigation() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -12, scale: 0.96 }}
             transition={{ duration: 0.2 }}
-            className="absolute top-16 left-4 right-4 md:hidden glass border-warm rounded-2xl p-3"
+            className="absolute top-16 left-4 right-4 md:hidden glass border-blue rounded-2xl p-3"
           >
             {NAV_ITEMS.map((item, i) => {
               const active = activeTab === item.id;
@@ -128,7 +128,7 @@ export default function Navigation() {
                   initial={{ opacity: 0, x: -14 }} animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: i * 0.06 }}
                   className="w-full flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-200"
-                  style={{ background: active ? 'rgba(245,158,11,0.08)' : 'transparent', color: active ? '#f59e0b' : '#a8a29e' }}
+                  style={{ background: active ? 'rgba(56, 189, 248,0.08)' : 'transparent', color: active ? '#38bdf8' : '#94a3b8' }}
                 >
                   <item.icon className="w-5 h-5" />
                   <span className="font-body text-sm tracking-wide">{item.label}</span>

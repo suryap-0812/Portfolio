@@ -25,8 +25,8 @@ export default function App() {
       </AnimatePresence>
 
       <div
-        className="min-h-screen text-[#fafaf9] overflow-x-hidden"
-        style={{ background: '#0e0c0a' }}
+        className="min-h-screen text-[#f8fafc] overflow-x-hidden"
+        style={{ background: '#020617' }}
       >
         <Navigation />
         <main>
