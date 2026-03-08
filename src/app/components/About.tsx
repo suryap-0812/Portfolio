@@ -2,6 +2,7 @@ import { motion, useInView, useScroll, useTransform } from 'motion/react';
 import { useRef, useState } from 'react';
 import { Code, Server, Database, Wrench, BookOpen, Trophy } from 'lucide-react';
 import ParticleCanvas from './ParticleCanvas';
+import Timeline3D from './Timeline3D';
 
 const SKILLS = [
   { icon: Code, title: 'Languages', desc: 'C++, C, Java, JavaScript, HTML, CSS, Python', color: '#38bdf8' },
@@ -12,14 +13,6 @@ const SKILLS = [
   { icon: Trophy, title: 'Profiles', desc: 'Leetcode: 1484 Max Rating, 125+ solved · Skillrack: 1009+ problems', color: '#7dd3fc' },
 ];
 
-const ACHIEVEMENTS = [
-  { year: '2025', role: 'Eureka! 2025 Zonal Rounds Shortlist', org: 'E-Cell, IIT Bombay' },
-  { year: '2025', role: 'Smart India Hackathon (SIH) Shortlist', org: 'Internal Round Selection' },
-  { year: '2025', role: 'Mastering DSA using C/C++', org: 'Udemy Certification' },
-  { year: '2025', role: 'Deep Learning Specialization', org: 'NVIDIA Certification' },
-  { year: '2024', role: 'ReactJS Masterclass', org: 'Udemy Certification' },
-  { year: '2024', role: 'Completion Of C++ Training', org: 'IIT Bombay Certification' },
-];
 
 function Label({ children }: { children: string }) {
   return (
@@ -152,44 +145,9 @@ export default function About() {
           </div>
         </div>
 
-        {/* ─── Achievements — staggered line wipes ─── */}
-        <div>
-          <div className="text-center mb-10">
-            <MaskWipe delay={0.6} inView={inView}><Label>Achievements & Certifications</Label></MaskWipe>
-            <MaskWipe delay={0.65} inView={inView}>
-              <h3 className="font-display tracking-wide text-2xl" style={{ color: '#f8fafc' }}>Timeline</h3>
-            </MaskWipe>
-          </div>
-
-          <div className="space-y-6">
-            {ACHIEVEMENTS.map((a, i) => (
-              <div key={i} className="overflow-hidden">
-                <motion.div
-                  initial={{ x: -40, opacity: 0 }}
-                  animate={inView ? { x: 0, opacity: 1 } : {}}
-                  transition={{ delay: 0.7 + i * 0.08, duration: 0.55, ease: [0.76, 0, 0.24, 1] }}
-                >
-                  <motion.div
-                    whileHover={{ x: 10, transition: { duration: 0.18 } }}
-                    className="flex items-start gap-6 group"
-                    style={{ cursor: 'none' }}
-                  >
-                    <div className="flex-shrink-0 w-20 font-mono text-[0.6rem] tracking-[0.28em] uppercase pt-1"
-                      style={{ color: 'rgba(56, 189, 248,0.4)' }}>{a.year}</div>
-                    <div className="flex-1 relative pl-6 pb-6"
-                      style={{ borderLeft: '1px solid rgba(56, 189, 248,0.1)' }}>
-                      <div className="absolute left-0 top-1.5 w-3 h-3 -translate-x-1.5 rounded-full transition-all duration-300 group-hover:scale-150"
-                        style={{ background: '#38bdf8', boxShadow: '0 0 8px rgba(56, 189, 248,0.55)' }} />
-                      <h4 className="font-body font-semibold text-lg mb-1 transition-colors duration-300 group-hover:text-[#38bdf8]"
-                        style={{ color: '#f8fafc' }}>{a.role}</h4>
-                      <p className="font-mono text-[0.6rem] tracking-[0.14em] uppercase"
-                        style={{ color: 'rgba(148, 163, 184,0.45)' }}>{a.org}</p>
-                    </div>
-                  </motion.div>
-                </motion.div>
-              </div>
-            ))}
-          </div>
+        {/* ─── 3D Timeline ─── */}
+        <div className="w-[100vw] relative left-1/2 right-1/2 -mx-[50vw]">
+          <Timeline3D />
         </div>
       </div>
 
