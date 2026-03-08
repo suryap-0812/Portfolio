@@ -25,7 +25,7 @@ const PROJECTS = [
     title: 'Price Snapshot',
     sub: 'Price Tracker',
     desc: 'A full-stack web app to track and compare product prices across multiple vendors with lowest-price reports and alerts.',
-    image: 'https://images.unsplash.com/photo-1556742049-0cfed4f6a45d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxsZWRnZXJ8ZW58MXx8fDE3NzIxNjY4MTF8MA&ixlib=rb-4.1.0&q=80&w=1080',
+    image: '/project_thumbnail_concept.png',
     tags: ['Spring Boot', 'MySQL', 'Thymeleaf', 'Maven'],
     accent: '#7dd3fc',
   },

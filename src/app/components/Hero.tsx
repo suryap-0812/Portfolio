@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from 'react';
 import { motion, useScroll, useTransform, AnimatePresence } from 'motion/react';
 import { Github, Linkedin, Mail, ArrowDown } from 'lucide-react';
 import ParticleCanvas from './ParticleCanvas';
+import Hero3DScene from './Hero3DScene';
 
 /* ─── Data ─── */
 const TAGLINES = [
@@ -117,6 +118,7 @@ export default function Hero() {
       {/* ─── Canvas bg moves at 0.4× ─── */}
       <motion.div className="absolute inset-0 will-change-transform" style={{ y: bgY }}>
         <ParticleCanvas section="hero" />
+        <Hero3DScene />
       </motion.div>
 
       {/* Vignette */}
