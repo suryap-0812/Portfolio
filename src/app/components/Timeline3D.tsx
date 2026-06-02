@@ -11,10 +11,10 @@ gsap.registerPlugin(ScrollTrigger);
 const ACHIEVEMENTS = [
     { year: '2025', role: 'Eureka! 2025 Zonal Rounds Shortlist', org: 'E-Cell, IIT Bombay' },
     { year: '2025', role: 'Smart India Hackathon (SIH) Shortlist', org: 'Internal Round Selection' },
-    { year: '2025', role: 'Mastering DSA using C/C++', org: 'Udemy Certification' },
-    { year: '2025', role: 'Deep Learning Specialization', org: 'NVIDIA Certification' },
-    { year: '2024', role: 'ReactJS Masterclass', org: 'Udemy Certification' },
-    { year: '2024', role: 'Completion Of C++ Training', org: 'IIT Bombay Certification' },
+    { year: '2025', role: 'Mastering Data Structures & Algorithms using C and C++', org: 'Udemy' },
+    { year: '2025', role: 'ReactJS Masterclass', org: 'Udemy' },
+    { year: '2024', role: 'Completion Of C++ Training', org: 'IIT Bombay' },
+    { year: '2024', role: 'Getting Started with Deep Learning', org: 'NVIDIA' },
 ];
 
 /* ─── ThreeJS Grid & Particles Background ─── */

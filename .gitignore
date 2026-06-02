@@ -46,3 +46,8 @@ Thumbs.db
 .cache/
 .eslintcache
 .parcel-cache/
+
+
+
+# Graphify
+graphify-out/*

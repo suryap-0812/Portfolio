@@ -7,10 +7,10 @@ import Timeline3D from './Timeline3D';
 const SKILLS = [
   { icon: Code, title: 'Languages', desc: 'C++, C, Java, JavaScript, HTML, CSS, Python', color: '#38bdf8' },
   { icon: Server, title: 'Technologies', desc: 'Spring Boot, NodeJS, Express, ReactJS, TailwindCSS, Django', color: '#3b82f6' },
-  { icon: Database, title: 'Databases', desc: 'SQL, MongoDB, PostgreSQL', color: '#7dd3fc' },
+  { icon: Database, title: 'Databases', desc: 'SQL, MongoDB', color: '#7dd3fc' },
   { icon: Wrench, title: 'Tools', desc: 'Git, GitHub, Postman, Vercel, Docker', color: '#38bdf8' },
   { icon: BookOpen, title: 'Core Concepts', desc: 'Data Structures & Algorithms, OOP, DBMS', color: '#3b82f6' },
-  { icon: Trophy, title: 'Profiles', desc: 'Leetcode: 1484 Max Rating, 125+ solved · Skillrack: 1009+ problems', color: '#7dd3fc' },
+  { icon: Trophy, title: 'Profiles', desc: 'Leetcode: 1551 Max Rating, 133+ solved · Skillrack: 1009 problems', color: '#7dd3fc' },
 ];
 
 
@@ -88,8 +88,8 @@ export default function About() {
           style={{ border: '1px solid rgba(56, 189, 248,0.08)' }}>
           {[
             { label: 'Projects Built', value: '10+' },
-            { label: 'Certifications', value: '6' },
-            { label: 'Problems Solved', value: '1009+' },
+            { label: 'Certifications', value: '4' },
+            { label: 'Problems Solved', value: '1142+' },
           ].map((s, i) => (
             <motion.div key={i}
               initial={{ opacity: 0, y: 24 }}
