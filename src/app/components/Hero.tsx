@@ -5,9 +5,9 @@ import ParticleCanvas from './ParticleCanvas';
 import Hero3DScene from './Hero3DScene';
 
 const TAGLINES = [
-  'Aspiring Full-Stack Developer & Software Engineer',
-  'Building Scalable Apps · Solving Hard Problems',
-  'ReactJS · NodeJS · Spring Boot · DSA',
+  'Full Stack Developer Intern · Sri Eshwar College of Engineering',
+  'Building Scalable Systems · Solving Complex Algorithms',
+  'ReactJS · NodeJS · Spring Boot · PostgreSQL · DSA',
 ];
 
 const HERO_WORDS = ['SURYA', 'P'];
@@ -53,7 +53,7 @@ function TaglineCycle() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -10 }}
           transition={{ duration: 0.45, ease: [0.16, 1, 0.3, 1] }}
-          className="absolute inset-0 text-left font-body text-base md:text-lg leading-relaxed text-slate-400"
+          className="absolute inset-0 text-left font-body text-sm md:text-base leading-relaxed text-slate-400"
         >
           {TAGLINES[idx]}
         </motion.p>
@@ -87,15 +87,15 @@ export default function Hero() {
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.5 }}
-              className="inline-flex items-center gap-2 px-3 py-1.5 rounded-md border border-[#38bdf8]/15 bg-[#38bdf8]/5 w-fit mb-6"
+              className="inline-flex items-center gap-2 px-3.5 py-2 rounded-md border border-[#38bdf8]/15 bg-[#38bdf8]/5 w-fit mb-6"
             >
               <span className="w-1.5 h-1.5 rounded-full bg-[#38bdf8] animate-pulse" />
-              <span className="font-mono text-[0.56rem] tracking-[0.25em] uppercase text-[#38bdf8]">
+              <span className="font-mono text-xs tracking-[0.25em] uppercase text-[#38bdf8]">
                 Open to Opportunities
               </span>
             </motion.div>
-          )}
-
+          )} 
+ 
           {/* Name Display */}
           {visible && (
             <h1 className="text-[clamp(3rem,8vw,6.5rem)] text-white leading-[0.9] mb-6 tracking-tighter">
@@ -121,7 +121,7 @@ export default function Hero() {
               <button
                 onClick={() => document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' })}
                 data-hover-label="WORK"
-                className="px-8 py-3.5 rounded-md font-mono text-[0.68rem] tracking-[0.2em] uppercase bg-white text-black hover:bg-slate-200 transition-colors cursor-none"
+                className="px-8 py-3.5 rounded-md font-mono text-xs md:text-sm tracking-[0.2em] uppercase bg-white text-black hover:bg-slate-200 transition-colors cursor-none"
               >
                 View Selected Work
               </button>
@@ -129,7 +129,7 @@ export default function Hero() {
               <button
                 onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
                 data-hover-label="TALK"
-                className="px-8 py-3.5 rounded-md font-mono text-[0.68rem] tracking-[0.2em] uppercase border border-white/10 hover:border-white/30 text-white transition-colors cursor-none"
+                className="px-8 py-3.5 rounded-md font-mono text-xs md:text-sm tracking-[0.2em] uppercase border border-white/10 hover:border-white/30 text-white transition-colors cursor-none"
               >
                 Get In Touch
               </button>
@@ -144,11 +144,11 @@ export default function Hero() {
               transition={{ duration: 0.5, delay: 0.5 }}
               className="flex items-center gap-5"
             >
-              <span className="font-mono text-[0.55rem] tracking-[0.25em] uppercase text-slate-500">// Connect</span>
+              <span className="font-mono text-xs tracking-[0.2em] uppercase text-slate-500">// Connect</span>
               {[
                 { icon: Github, label: 'GitHub', href: '#' },
                 { icon: Linkedin, label: 'LinkedIn', href: '#' },
-                { icon: Mail, label: 'Email', href: 'mailto:surya@devportfolio.com' },
+                { icon: Mail, label: 'Email', href: 'mailto:surya.p2024cse@sece.ac.in' },
               ].map((s) => (
                 <a
                   key={s.label}

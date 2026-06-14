@@ -8,9 +8,9 @@ const ACHIEVEMENTS = [
   { year: '2025', role: 'Eureka! 2025 Zonal Rounds Shortlist', org: 'E-Cell, IIT Bombay' },
   { year: '2025', role: 'Smart India Hackathon (SIH) Shortlist', org: 'Internal Round Selection' },
   { year: '2025', role: 'Mastering Data Structures & Algorithms using C and C++', org: 'Udemy' },
-  { year: '2025', role: 'ReactJS Masterclass', org: 'Udemy' },
-  { year: '2024', role: 'Completion Of C++ Training', org: 'IIT Bombay' },
-  { year: '2024', role: 'Getting Started with Deep Learning', org: 'NVIDIA' },
+  { year: '2025', role: 'Getting Started with Deep Learning', org: 'NVIDIA' },
+  { year: '2024', role: 'Completion Of C++ Training', org: 'Udemy' },
+  { year: '2024', role: 'ReactJS Masterclass', org: 'Udemy' },
 ];
 
 export default function Timeline3D() {
@@ -80,10 +80,10 @@ export default function Timeline3D() {
         
         {/* Header */}
         <div className="mb-20 text-left">
-          <p className="font-mono text-[0.55rem] tracking-[0.3em] uppercase mb-3 text-slate-500">
+          <p className="font-mono text-xs md:text-sm tracking-[0.3em] uppercase mb-3 text-slate-500">
             // Achievements & Certifications
           </p>
-          <h2 className="font-display text-2xl md:text-3xl font-black text-white uppercase tracking-tight">
+          <h2 className="font-display text-3xl md:text-4xl font-black text-white uppercase tracking-tight">
             Timeline
           </h2>
         </div>
@@ -116,7 +116,7 @@ export default function Timeline3D() {
               >
                 {/* Year Marker (Left of the line) */}
                 <div className="absolute -left-[85px] md:-left-[145px] w-[50px] text-right">
-                  <div className="font-mono text-xs tracking-[0.2em] text-slate-500">
+                  <div className="font-mono text-sm tracking-[0.2em] text-slate-500">
                     {a.year}
                   </div>
                 </div>
@@ -128,10 +128,10 @@ export default function Timeline3D() {
 
                 {/* Content */}
                 <div className="text-left">
-                  <h4 className="font-display font-bold text-sm md:text-base text-slate-200 group-hover:text-white transition-colors">
+                  <h4 className="font-display font-bold text-base md:text-lg text-slate-200 group-hover:text-white transition-colors">
                     {a.role}
                   </h4>
-                  <p className="font-mono text-[0.55rem] tracking-[0.2em] uppercase text-slate-500 mt-1">
+                  <p className="font-mono text-xs md:text-sm tracking-[0.2em] uppercase text-slate-500 mt-1">
                     {a.org}
                   </p>
                 </div>

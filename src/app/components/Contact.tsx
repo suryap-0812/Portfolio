@@ -4,7 +4,7 @@ import { Mail, MapPin, Phone, Send } from 'lucide-react';
 import ParticleCanvas from './ParticleCanvas';
 
 const CONTACT_INFO = [
-  { icon: Mail, label: 'Email', value: 'surya@devportfolio.com', href: 'mailto:surya@devportfolio.com', coord: 'SYS.CONN: EML' },
+  { icon: Mail, label: 'Email', value: 'surya.p2024cse@sece.ac.in', href: 'mailto:surya.p2024cse@sece.ac.in', coord: 'SYS.CONN: EML' },
   { icon: Phone, label: 'Phone', value: '+91 98765 43210', href: 'tel:+919876543210', coord: 'SYS.CONN: TEL' },
   { icon: MapPin, label: 'Location', value: 'India', href: '#', coord: 'SYS.CONN: LOC' },
 ];
@@ -60,7 +60,7 @@ function ShimmerBlock() {
     <div
       className="relative w-full h-40 border border-white/5 bg-slate-950 flex items-center justify-center mb-8 hud-brackets hud-scanline"
     >
-      <div className="absolute top-2 left-2 font-mono text-[0.45rem] text-slate-500">SYS.MED: SHOWREEL // ACTIVE</div>
+      <div className="absolute top-2 left-2 font-mono text-xs text-slate-500">SYS.MED: SHOWREEL // ACTIVE</div>
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
@@ -83,7 +83,7 @@ function ShimmerBlock() {
         </svg>
       </motion.button>
 
-      <p className="absolute bottom-3 left-0 right-0 text-center font-mono text-[0.5rem] tracking-[0.2em] uppercase text-slate-600">// PRESS PLAY FOR CONSOLE DEMO</p>
+      <p className="absolute bottom-3 left-0 right-0 text-center font-mono text-xs tracking-[0.2em] uppercase text-slate-600">// PRESS PLAY FOR CONSOLE DEMO</p>
     </div>
   );
 }
@@ -93,11 +93,11 @@ function ScrambleCTA() {
 
   return (
     <a
-      href="mailto:surya@devportfolio.com"
+      href="mailto:surya.p2024cse@sece.ac.in"
       onMouseEnter={start}
       onMouseLeave={reset}
       data-hover-label="EMAIL"
-      className="inline-flex items-center gap-3 px-6 py-3 border border-[#38bdf8]/20 hover:border-[#38bdf8]/50 text-white font-mono text-xs tracking-[0.1em] bg-slate-950 transition-colors mt-6 cursor-none"
+      className="inline-flex items-center gap-3 px-6 py-3.5 border border-[#38bdf8]/20 hover:border-[#38bdf8]/50 text-white font-mono text-sm tracking-[0.1em] bg-slate-950 transition-colors mt-6 cursor-none"
     >
       <Send className="w-3.5 h-3.5 text-sky-400" />
       <span>{display}</span>
@@ -130,14 +130,14 @@ export default function Contact() {
         {/* Header */}
         <div className="flex flex-col lg:flex-row lg:items-end justify-between mb-16 gap-8 border-b border-white/5 pb-12">
           <div className="text-left max-w-xl">
-            <span className="font-mono text-[0.55rem] tracking-[0.3em] uppercase text-sky-400/70 block mb-3">
+            <span className="font-mono text-xs md:text-sm tracking-[0.3em] uppercase text-sky-400/70 block mb-3">
               SYSTEM CONNECTION // CONTACT_TERMINAL
             </span>
             <h2 className="font-display text-4xl md:text-6xl font-black text-white tracking-tighter uppercase">
               TALK_INTERFACE
             </h2>
           </div>
-          <p className="font-body text-slate-400 text-sm leading-relaxed max-w-md text-left">
+          <p className="font-body text-slate-350 text-sm md:text-base leading-relaxed max-w-md text-left">
             Establish a transmission pipeline for queries, collaborative design reviews, or server integration tasks.
           </p>
         </div>
@@ -150,7 +150,7 @@ export default function Contact() {
             <h3 className="font-display text-base font-bold text-white mb-4 uppercase tracking-wider">
               OPERATIONAL_ROUTING
             </h3>
-            <p className="font-body text-xs md:text-sm text-slate-400 leading-relaxed mb-6">
+            <p className="font-body text-sm text-slate-400 leading-relaxed mb-6">
               Active queues are monitored for software proposals and infrastructure projects.
             </p>
 
@@ -162,12 +162,12 @@ export default function Contact() {
                   data-hover-label={info.label.toUpperCase()}
                   className="flex items-center gap-4 p-4 border border-white/5 hover:border-[#38bdf8]/20 bg-slate-950/20 transition-all cursor-none"
                 >
-                  <div className="w-8 h-8 flex items-center justify-center bg-slate-950 border border-white/5">
-                    <info.icon size={12} className="text-slate-400" />
+                  <div className="w-9 h-9 flex items-center justify-center bg-slate-950 border border-white/5">
+                    <info.icon size={13} className="text-slate-400" />
                   </div>
                   <div>
-                    <span className="font-mono text-[0.5rem] tracking-wider text-slate-600 block">// {info.coord}</span>
-                    <span className="font-body text-xs text-slate-200">{info.value}</span>
+                    <span className="font-mono text-xs tracking-wider text-slate-500 block">// {info.coord}</span>
+                    <span className="font-body text-sm text-slate-200">{info.value}</span>
                   </div>
                 </a>
               ))}
@@ -181,13 +181,13 @@ export default function Contact() {
           {/* Right Column: Form */}
           <div className="lg:col-span-7">
             <form onSubmit={handleSubmit} className="p-8 border border-white/5 bg-slate-950/20 space-y-6 text-left hud-brackets hud-scanline">
-              <div className="flex justify-between items-center font-mono text-[0.55rem] text-slate-500 mb-4">
+              <div className="flex justify-between items-center font-mono text-xs text-slate-500 mb-4">
                 <span>[ INPUT_FORM // DATA_STREAM ]</span>
                 <span>COORD: X-104</span>
               </div>
 
               <div>
-                <label htmlFor="c-name" className="block font-mono text-[0.55rem] tracking-widest text-slate-500 uppercase mb-2">
+                <label htmlFor="c-name" className="block font-mono text-xs tracking-widest text-slate-500 uppercase mb-2">
                   // SENDER_IDENTIFIER
                 </label>
                 <input 
@@ -198,12 +198,12 @@ export default function Contact() {
                   onChange={e => setForm({ ...form, name: e.target.value })}
                   placeholder="e.g. Surya P"
                   data-hover-label="IDENTIFIER"
-                  className="w-full px-4 py-3 border border-white/10 bg-slate-950 text-white font-body text-xs outline-none focus:border-sky-400/40 transition-colors cursor-none placeholder-slate-800" 
+                  className="w-full px-4 py-3 border border-white/10 bg-slate-950 text-white font-body text-sm outline-none focus:border-sky-400/40 transition-colors cursor-none placeholder-slate-800" 
                 />
               </div>
 
               <div>
-                <label htmlFor="c-email" className="block font-mono text-[0.55rem] tracking-widest text-slate-500 uppercase mb-2">
+                <label htmlFor="c-email" className="block font-mono text-xs tracking-widest text-slate-500 uppercase mb-2">
                   // TRANSMISSION_ROUTING_EMAIL
                 </label>
                 <input 
@@ -214,12 +214,12 @@ export default function Contact() {
                   onChange={e => setForm({ ...form, email: e.target.value })}
                   placeholder="you@example.com"
                   data-hover-label="EMAIL"
-                  className="w-full px-4 py-3 border border-white/10 bg-slate-950 text-white font-body text-xs outline-none focus:border-sky-400/40 transition-colors cursor-none placeholder-slate-800" 
+                  className="w-full px-4 py-3 border border-white/10 bg-slate-950 text-white font-body text-sm outline-none focus:border-sky-400/40 transition-colors cursor-none placeholder-slate-800" 
                 />
               </div>
 
               <div>
-                <label htmlFor="c-msg" className="block font-mono text-[0.55rem] tracking-widest text-slate-500 uppercase mb-2">
+                <label htmlFor="c-msg" className="block font-mono text-xs tracking-widest text-slate-500 uppercase mb-2">
                   // TELEMETRY_MESSAGE_CONTENT
                 </label>
                 <textarea 
@@ -230,7 +230,7 @@ export default function Contact() {
                   onChange={e => setForm({ ...form, message: e.target.value })}
                   placeholder="Insert query telemetry..."
                   data-hover-label="MESSAGE"
-                  className="w-full px-4 py-3 border border-white/10 bg-slate-950 text-white font-body text-xs outline-none resize-none focus:border-sky-400/40 transition-colors cursor-none placeholder-slate-800" 
+                  className="w-full px-4 py-3 border border-white/10 bg-slate-950 text-white font-body text-sm outline-none resize-none focus:border-sky-400/40 transition-colors cursor-none placeholder-slate-800" 
                 />
               </div>
 
@@ -238,7 +238,7 @@ export default function Contact() {
                 type="submit" 
                 disabled={sending}
                 data-hover-label="SUBMIT"
-                className="w-full py-3.5 bg-white text-black hover:bg-slate-200 disabled:opacity-60 transition-colors font-mono text-xs tracking-widest uppercase flex items-center justify-center gap-2 cursor-none"
+                className="w-full py-3.5 bg-white text-black hover:bg-slate-200 disabled:opacity-60 transition-colors font-mono text-sm tracking-widest uppercase flex items-center justify-center gap-2 cursor-none"
               >
                 {sending ? (
                   <div className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin" />
@@ -258,10 +258,10 @@ export default function Contact() {
 
         {/* Footer */}
         <div className="mt-20 pt-8 border-t border-white/5 text-center flex flex-col md:flex-row md:justify-between items-center gap-4">
-          <p className="font-mono text-[0.5rem] tracking-[0.2em] uppercase text-slate-600">
+          <p className="font-mono text-xs tracking-[0.2em] uppercase text-slate-600">
             © 2026 Surya P &nbsp;·&nbsp; ALL OPERATIONAL RIGHTS SECURED.
           </p>
-          <div className="font-mono text-[0.5rem] text-slate-600 tracking-wider">
+          <div className="font-mono text-xs text-slate-600 tracking-wider">
             [ METRICS: SPEED_OPTIMIZED // ACCESSIBILITY: A11Y_PASS ]
           </div>
         </div>

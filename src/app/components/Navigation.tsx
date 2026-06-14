@@ -66,7 +66,7 @@ export default function Navigation() {
               key={item.id}
               onClick={() => scrollTo(item.id)}
               data-hover-label={item.label.toUpperCase()}
-              className="relative py-1 font-mono text-[0.62rem] tracking-[0.25em] uppercase transition-colors duration-250 cursor-none"
+              className="relative py-1 font-mono text-xs md:text-sm tracking-[0.18em] uppercase transition-colors duration-250 cursor-none"
               style={{ color: active ? '#ffffff' : '#94a3b8' }}
             >
               <span className="hover:text-white transition-colors duration-200">
@@ -112,7 +112,7 @@ export default function Navigation() {
                   <button
                     key={item.id}
                     onClick={() => scrollTo(item.id)}
-                    className={`w-full text-left py-3.5 px-4 font-mono text-[0.68rem] tracking-[0.2em] uppercase rounded-lg transition-colors ${
+                    className={`w-full text-left py-3.5 px-4 font-mono text-xs tracking-[0.15em] uppercase rounded-lg transition-colors ${
                       active 
                         ? 'bg-white/5 text-white' 
                         : 'text-slate-400 hover:text-white hover:bg-white/5'
