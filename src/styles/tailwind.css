@@ -248,7 +248,6 @@
     /* Editorial Layout & Grid Structure */
     .editorial-grid {
         display: grid;
-        grid-template-columns: repeat(12, minmax(0, 1fr));
         border-top: 1px solid rgba(255, 255, 255, 0.05);
         border-left: 1px solid rgba(255, 255, 255, 0.05);
     }
@@ -259,6 +258,74 @@
         padding: 2.5rem;
         background: #020617;
         transition: background 0.3s ease;
+        position: relative;
+    }
+
+    /* Tactical HUD & Hologram Aesthetics */
+    .hud-brackets {
+        position: relative;
+    }
+    .hud-brackets::before, .hud-brackets::after {
+        content: '';
+        position: absolute;
+        width: 8px;
+        height: 8px;
+        border-color: rgba(56, 189, 248, 0.4);
+        border-style: solid;
+        pointer-events: none;
+        transition: all 0.3s ease;
+    }
+    .hud-brackets::before {
+        top: 0; left: 0;
+        border-width: 1px 0 0 1px;
+    }
+    .hud-brackets::after {
+        bottom: 0; right: 0;
+        border-width: 0 1px 1px 0;
+    }
+    .hud-brackets:hover::before {
+        border-color: rgba(56, 189, 248, 0.95);
+        transform: translate(-2px, -2px);
+    }
+    .hud-brackets:hover::after {
+        border-color: rgba(56, 189, 248, 0.95);
+        transform: translate(2px, 2px);
+    }
+
+    .hud-scanline {
+        position: relative;
+        overflow: hidden;
+    }
+    .hud-scanline::after {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0; height: 2px;
+        background: linear-gradient(to right, transparent, rgba(56, 189, 248, 0.18), transparent);
+        animation: scanline-hud 7s linear infinite;
+        pointer-events: none;
+    }
+    
+    @keyframes scanline-hud {
+        0% { transform: translateY(-100%); }
+        100% { transform: translateY(500px); }
+    }
+
+    .hud-corner-cross {
+        position: relative;
+    }
+    .hud-corner-cross::before, .hud-corner-cross::after {
+        content: '+';
+        position: absolute;
+        font-family: var(--font-mono);
+        font-size: 10px;
+        color: rgba(56, 189, 248, 0.3);
+        pointer-events: none;
+    }
+    .hud-corner-cross::before {
+        top: 4px; left: 4px;
+    }
+    .hud-corner-cross::after {
+        bottom: 4px; right: 4px;
     }
 }
 
