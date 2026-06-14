@@ -1,4 +1,4 @@
-import { motion, useInView, useScroll, useTransform } from 'motion/react';
+import { motion } from 'motion/react';
 import { useRef, useState, useCallback, useEffect } from 'react';
 import { Mail, MapPin, Phone, Send } from 'lucide-react';
 import ParticleCanvas from './ParticleCanvas';
@@ -12,7 +12,6 @@ const CONTACT_INFO = [
 const SCRAMBLE_CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$&';
 const SCRAMBLE_REAL = 'Get In Touch';
 
-/* ─── Letter scramble hook ─── */
 function useScramble(real: string) {
   const [display, setDisplay] = useState(real);
   const rafRef = useRef<ReturnType<typeof setTimeout>>();
@@ -55,306 +54,215 @@ function useScramble(real: string) {
   return { display, start, reset };
 }
 
-/* ─── Shimmer shimmer component (for video placeholder) ─── */
 function ShimmerBlock() {
   const [playing, setPlaying] = useState(false);
   return (
     <div
-      className="relative w-full h-40 rounded-2xl overflow-hidden flex items-center justify-center mb-8"
-      style={{ background: '#1e293b', border: '1px solid rgba(56, 189, 248,0.1)' }}
+      className="relative w-full h-40 border border-white/5 bg-slate-950 flex items-center justify-center mb-8"
     >
-      {/* Diagonal shimmer — light sweep every 2.5s */}
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
-          background: 'linear-gradient(105deg, transparent 35%, rgba(255,255,255,0.06) 50%, transparent 65%)',
+          background: 'linear-gradient(105deg, transparent 35%, rgba(255,255,255,0.03) 50%, transparent 65%)',
           backgroundSize: '250% 100%',
           animation: 'shimmer-sweep 2.5s ease-in-out infinite',
         }}
       />
-      {/* Play button — spring bounce on hover */}
       <motion.button
         onHoverStart={() => setPlaying(true)}
         onHoverEnd={() => setPlaying(false)}
-        whileHover={{ scale: 1.15 }}
-        animate={playing ? { scale: [1.15, 1] } : { scale: 1 }}
-        transition={{ type: 'spring', stiffness: 260, damping: 14 }}
+        whileHover={{ scale: 1.05 }}
         aria-label="Play demo"
         data-hover-label="PLAY"
-        style={{ cursor: 'none' }}
-        className="relative w-14 h-14 rounded-full flex items-center justify-center"
+        className="relative w-12 h-12 flex items-center justify-center border border-white/10 bg-slate-900 cursor-none"
         onClick={() => { }}
       >
-        <div className="absolute inset-0 rounded-full"
-          style={{ background: 'linear-gradient(135deg, #38bdf8, #3b82f6)', boxShadow: '0 0 22px rgba(56, 189, 248,0.35)' }} />
-        <svg className="relative z-10 ml-1" width="20" height="20" viewBox="0 0 24 24" fill="#020617">
+        <svg className="ml-0.5 text-white fill-current" width="14" height="14" viewBox="0 0 24 24">
           <polygon points="5,3 19,12 5,21" />
         </svg>
       </motion.button>
 
-      <p className="absolute bottom-3 left-0 right-0 text-center font-mono text-[0.55rem] tracking-[0.2em] uppercase"
-        style={{ color: 'rgba(148, 163, 184,0.35)' }}>// Demo Showreel</p>
+      <p className="absolute bottom-3 left-0 right-0 text-center font-mono text-[0.55rem] tracking-[0.2em] uppercase text-slate-600">// Demo Showreel</p>
     </div>
   );
 }
 
-/* ─── Scramble CTA button ─── */
 function ScrambleCTA() {
   const { display, start, reset } = useScramble(SCRAMBLE_REAL);
   const [hovered, setHovered] = useState(false);
 
   return (
-    <motion.a
+    <a
       href="mailto:surya@devportfolio.com"
       onMouseEnter={() => { setHovered(true); start(); }}
       onMouseLeave={() => { setHovered(false); reset(); }}
-      whileHover={{ scale: 1.03 }}
-      whileTap={{ scale: 0.97 }}
       data-hover-label="EMAIL"
-      className="inline-flex items-center gap-3 px-7 py-4 rounded-xl font-mono text-sm tracking-[0.06em] relative overflow-hidden group mt-6"
-      style={{ cursor: 'none', background: 'transparent' }}
+      className="inline-flex items-center gap-3 px-6 py-3 border border-white/10 hover:border-white/30 text-white font-mono text-xs tracking-[0.1em] transition-colors mt-6 cursor-none"
     >
-      {/* SVG border draws on hover */}
-      <svg className="absolute inset-0 w-full h-full rounded-xl pointer-events-none" style={{ overflow: 'visible' }}>
-        <rect x="1" y="1" width="calc(100% - 2px)" height="calc(100% - 2px)"
-          rx="12" ry="12" fill="none"
-          stroke="#38bdf8" strokeWidth="1.5"
-          strokeDasharray="1000" strokeDashoffset={hovered ? 0 : 1000}
-          style={{ transition: hovered ? 'stroke-dashoffset 0.5s ease' : 'stroke-dashoffset 0.25s ease' }}
-        />
-      </svg>
-
-      <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-        style={{ background: 'rgba(56, 189, 248,0.05)' }} />
-
-      <Send className="w-4 h-4 relative z-10" style={{ color: '#38bdf8' }} />
-      <span className="relative z-10 font-mono" style={{ color: '#f8fafc', minWidth: '8ch', display: 'inline-block' }}>
-        {display}
-      </span>
-    </motion.a>
+      <Send className="w-3.5 h-3.5 text-slate-400" />
+      <span>{display}</span>
+    </a>
   );
 }
 
-/* ─── Main Contact ─── */
 export default function Contact() {
-  const ref = useRef<HTMLDivElement>(null);
-  const inView = useInView(ref, { once: true, margin: '-80px' });
   const [form, setForm] = useState({ name: '', email: '', message: '' });
   const [sending, setSending] = useState(false);
   const [sent, setSent] = useState(false);
-
-  // Scroll parallax
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
-  const bgY = useTransform(scrollYProgress, [0, 1], ['0%', '-40%']);
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSending(true);
     setTimeout(() => {
-      setSending(false); setSent(true);
+      setSending(false); 
+      setSent(true);
       setForm({ name: '', email: '', message: '' });
       setTimeout(() => setSent(false), 4000);
-    }, 1600);
-  };
-
-  const inputStyle: React.CSSProperties = {
-    background: 'rgba(30, 41, 59,0.75)',
-    border: '1px solid rgba(56, 189, 248,0.1)',
-    color: '#f8fafc',
-    outline: 'none',
-    fontFamily: '"Plus Jakarta Sans", sans-serif',
-    transition: 'border-color 0.3s, box-shadow 0.3s',
-  };
-  const onFocus = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    e.currentTarget.style.borderColor = 'rgba(56, 189, 248,0.4)';
-    e.currentTarget.style.boxShadow = '0 0 18px rgba(56, 189, 248,0.07)';
-  };
-  const onBlur = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    e.currentTarget.style.borderColor = 'rgba(56, 189, 248,0.1)';
-    e.currentTarget.style.boxShadow = 'none';
+    }, 1200);
   };
 
   return (
-    <section id="contact" ref={ref} className="relative min-h-screen py-36 px-6 overflow-hidden"
-      style={{ background: '#020617' }}>
+    <section id="contact" className="relative min-h-screen py-24 px-6 md:px-12 bg-[#020617] border-t border-white/5">
+      <ParticleCanvas section="contact" />
 
-      <motion.div className="absolute inset-0 will-change-transform" style={{ y: bgY }}>
-        <ParticleCanvas section="contact" />
-      </motion.div>
-
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {[
-          { left: '16%', rotate: '-3deg' },
-          { right: '20%', rotate: '3deg' },
-        ].map((b, i) => (
-          <div key={i} className="absolute top-0 bottom-0 w-px opacity-20"
-            style={{ ...b, background: 'linear-gradient(to bottom, transparent, rgba(56, 189, 248,0.07) 40%, rgba(59, 130, 246,0.06) 70%, transparent)', borderStyle: 'none' }} />
-        ))}
-      </div>
-
-      <div className="absolute top-0 left-0 right-0 h-px"
-        style={{ background: 'linear-gradient(90deg, transparent, rgba(56, 189, 248,0.3), rgba(59, 130, 246,0.25), transparent)' }} />
-
-      <div className="relative z-10 max-w-6xl mx-auto">
-
-        {/* Header — line wipes */}
-        <div className="text-center mb-20">
-          {[
-            { content: '// Contact', delay: 0, style: { fontFamily: '"Fira Code", monospace', fontSize: '0.6rem', letterSpacing: '0.42em', textTransform: 'uppercase' as const, color: 'rgba(56, 189, 248,0.55)' } },
-          ].map((l, i) => (
-            <div key={i} className="overflow-hidden mb-2">
-              <motion.p initial={{ y: '100%' }} animate={inView ? { y: '0%' } : {}}
-                transition={{ duration: 0.6, delay: l.delay, ease: [0.76, 0, 0.24, 1] }}
-                style={l.style}>{l.content}</motion.p>
-            </div>
-          ))}
-
-          <div className="overflow-hidden mb-2">
-            <motion.h2 initial={{ y: '100%' }} animate={inView ? { y: '0%' } : {}}
-              transition={{ duration: 0.65, delay: 0.08, ease: [0.76, 0, 0.24, 1] }}
-              className="font-display tracking-wide leading-[1.1]"
-              style={{ fontSize: 'clamp(2.4rem, 5vw, 3.8rem)', background: 'linear-gradient(135deg, #f8fafc, #38bdf8)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
-              Let's Build Something
-            </motion.h2>
+      <div className="relative z-10 max-w-7xl mx-auto">
+        
+        {/* Header */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
+          <div className="text-left">
+            <span className="font-mono text-[0.55rem] tracking-[0.3em] uppercase text-slate-500 block mb-2">
+              // GET IN TOUCH
+            </span>
+            <h2 className="font-display text-3xl md:text-5xl font-black text-white tracking-tight uppercase">
+              Let's Connect
+            </h2>
           </div>
-          <div className="overflow-hidden mb-6">
-            <motion.h2 initial={{ y: '100%' }} animate={inView ? { y: '0%' } : {}}
-              transition={{ duration: 0.65, delay: 0.16, ease: [0.76, 0, 0.24, 1] }}
-              className="font-display tracking-wide leading-[1.15]"
-              style={{ fontSize: 'clamp(2.4rem, 5vw, 3.8rem)', background: 'linear-gradient(135deg, #38bdf8, #3b82f6)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', animation: 'blue-shimmer 4s linear infinite' }}>
-              Extraordinary
-            </motion.h2>
-          </div>
-          <div className="overflow-hidden">
-            <motion.p initial={{ y: '100%' }} animate={inView ? { y: '0%' } : {}}
-              transition={{ duration: 0.6, delay: 0.24, ease: [0.76, 0, 0.24, 1] }}
-              className="font-body text-base max-w-xl mx-auto" style={{ color: '#94a3b8', lineHeight: 2 }}>
-              Have a project in mind? I'd love to hear about it. Let's create something meaningful together.
-            </motion.p>
-          </div>
+          <p className="font-body text-slate-400 text-xs md:text-sm max-w-md text-left leading-relaxed">
+            Have a system to build or a problem to solve? Send me a message and let's work on it.
+          </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-
-          {/* ─── Left info ─── */}
-          <motion.div initial={{ opacity: 0, x: -50 }} animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ delay: 0.28, duration: 0.7 }} className="space-y-5">
-            <h3 className="font-display tracking-wide text-2xl mb-5" style={{ color: '#f8fafc' }}>Let's Connect</h3>
-            <p className="font-body text-base mb-6" style={{ color: '#94a3b8', lineHeight: 2 }}>
-              I'm always open to new opportunities, collaborations, and interesting conversations.
-              Whether you have a question or just want to say hi — my inbox is always open.
+        {/* Two-Column Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          {/* Left Column: Info & Showreel */}
+          <div className="lg:col-span-5 flex flex-col text-left">
+            <h3 className="font-display text-lg font-bold text-white mb-4 uppercase tracking-wider">
+              Channels
+            </h3>
+            <p className="font-body text-xs md:text-sm text-slate-400 leading-relaxed mb-6">
+              I am open to developer roles, open-source projects, and collaborative software engineering.
             </p>
 
-            {/* ─── Showreel shimmer block ─── */}
             <ShimmerBlock />
 
-            {CONTACT_INFO.map((info, i) => (
-              <motion.a key={info.label} href={info.href}
-                initial={{ opacity: 0, x: -22 }} animate={inView ? { opacity: 1, x: 0 } : {}}
-                transition={{ delay: 0.35 + i * 0.1, duration: 0.5 }}
-                whileHover={{ x: 8 }}
-                data-hover-label={info.label.toUpperCase()}
-                className="group flex items-center gap-4 p-5 rounded-xl relative overflow-hidden"
-                style={{ background: 'rgba(15, 23, 42,0.6)', border: '1px solid rgba(56, 189, 248,0.08)', cursor: 'none' }}
-                onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(56, 189, 248,0.26)'; (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(56, 189, 248,0.04)'; }}
-                onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(56, 189, 248,0.08)'; (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(15, 23, 42,0.6)'; }}
-              >
-                <div className="w-11 h-11 rounded-lg flex items-center justify-center flex-shrink-0"
-                  style={{ background: 'rgba(56, 189, 248,0.09)', border: '1px solid rgba(56, 189, 248,0.2)' }}>
-                  <info.icon className="w-5 h-5" style={{ color: '#38bdf8' }} />
-                </div>
-                <div>
-                  <p className="font-mono text-[0.56rem] tracking-[0.16em] uppercase mb-0.5"
-                    style={{ color: 'rgba(148, 163, 184,0.38)' }}>// {info.label}</p>
-                  <p className="font-body font-medium text-base transition-colors duration-300 group-hover:text-[#38bdf8]"
-                    style={{ color: '#f8fafc' }}>{info.value}</p>
-                </div>
-              </motion.a>
-            ))}
-
-            {/* ─── Scramble CTA ─── */}
-            <ScrambleCTA />
-          </motion.div>
-
-          {/* ─── Right form ─── */}
-          <motion.div initial={{ opacity: 0, x: 50 }} animate={inView ? { opacity: 1, x: 0 } : {}}
-            transition={{ delay: 0.35, duration: 0.7 }}>
-            <form onSubmit={handleSubmit} className="p-8 rounded-2xl space-y-6"
-              style={{ background: 'rgba(15, 23, 42,0.55)', border: '1px solid rgba(56, 189, 248,0.08)', backdropFilter: 'blur(10px)' }}>
-              <h3 className="font-display tracking-wide text-2xl mb-2" style={{ color: '#f8fafc' }}>Send a Message</h3>
-
-              {[
-                { id: 'c-name', type: 'text', label: 'Your Name', ph: 'Surya P', val: form.name, key: 'name' as const },
-                { id: 'c-email', type: 'email', label: 'Email Address', ph: 'you@example.com', val: form.email, key: 'email' as const },
-              ].map(f => (
-                <div key={f.id}>
-                  <label htmlFor={f.id} className="block font-mono text-[0.56rem] tracking-[0.18em] uppercase mb-2"
-                    style={{ color: 'rgba(148, 163, 184,0.45)' }}>// {f.label}</label>
-                  <input type={f.type} id={f.id} required
-                    value={f.val} onChange={e => setForm({ ...form, [f.key]: e.target.value })}
-                    placeholder={f.ph}
-                    data-hover-label="WRITE"
-                    className="w-full px-4 py-3 rounded-xl text-sm placeholder-[#334155] cursor-none"
-                    style={inputStyle} onFocus={onFocus} onBlur={onBlur} />
-                </div>
+            <div className="space-y-4">
+              {CONTACT_INFO.map((info) => (
+                <a key={info.label} href={info.href}
+                  data-hover-label={info.label.toUpperCase()}
+                  className="flex items-center gap-4 p-4 border border-white/5 hover:border-white/10 bg-slate-950/20 transition-all cursor-none"
+                >
+                  <div className="w-8 h-8 flex items-center justify-center bg-slate-950 border border-white/5">
+                    <info.icon size={14} className="text-slate-400" />
+                  </div>
+                  <div>
+                    <span className="font-mono text-[0.55rem] tracking-wider text-slate-600 block">// {info.label}</span>
+                    <span className="font-body text-xs md:text-sm text-slate-200">{info.value}</span>
+                  </div>
+                </a>
               ))}
+            </div>
+
+            <div className="w-fit">
+              <ScrambleCTA />
+            </div>
+          </div>
+
+          {/* Right Column: Form */}
+          <div className="lg:col-span-7">
+            <form onSubmit={handleSubmit} className="p-8 border border-white/5 bg-slate-950/20 space-y-6 text-left">
+              <h3 className="font-display text-lg font-bold text-white uppercase tracking-wider mb-4">
+                Message Interface
+              </h3>
 
               <div>
-                <label htmlFor="c-msg" className="block font-mono text-[0.56rem] tracking-[0.18em] uppercase mb-2"
-                  style={{ color: 'rgba(148, 163, 184,0.45)' }}>// Message</label>
-                <textarea id="c-msg" required rows={5}
-                  value={form.message} onChange={e => setForm({ ...form, message: e.target.value })}
-                  placeholder="Tell me about your project..."
+                <label htmlFor="c-name" className="block font-mono text-[0.55rem] tracking-widest text-slate-500 uppercase mb-2">
+                  // Your Name
+                </label>
+                <input 
+                  type="text" 
+                  id="c-name" 
+                  required
+                  value={form.name} 
+                  onChange={e => setForm({ ...form, name: e.target.value })}
+                  placeholder="e.g. Surya P"
                   data-hover-label="WRITE"
-                  className="w-full px-4 py-3 rounded-xl text-sm resize-none placeholder-[#334155] cursor-none"
-                  style={inputStyle as React.CSSProperties}
-                  onFocus={onFocus as React.FocusEventHandler<HTMLTextAreaElement>}
-                  onBlur={onBlur as React.FocusEventHandler<HTMLTextAreaElement>} />
+                  className="w-full px-4 py-3 border border-white/10 bg-slate-950 text-white font-body text-xs md:text-sm outline-none focus:border-white/30 transition-colors cursor-none placeholder-slate-700" 
+                />
               </div>
 
-              <motion.button type="submit" disabled={sending}
-                whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
+              <div>
+                <label htmlFor="c-email" className="block font-mono text-[0.55rem] tracking-widest text-slate-500 uppercase mb-2">
+                  // Email Address
+                </label>
+                <input 
+                  type="email" 
+                  id="c-email" 
+                  required
+                  value={form.email} 
+                  onChange={e => setForm({ ...form, email: e.target.value })}
+                  placeholder="you@example.com"
+                  data-hover-label="WRITE"
+                  className="w-full px-4 py-3 border border-white/10 bg-slate-950 text-white font-body text-xs md:text-sm outline-none focus:border-white/30 transition-colors cursor-none placeholder-slate-700" 
+                />
+              </div>
+
+              <div>
+                <label htmlFor="c-msg" className="block font-mono text-[0.55rem] tracking-widest text-slate-500 uppercase mb-2">
+                  // Message
+                </label>
+                <textarea 
+                  id="c-msg" 
+                  required 
+                  rows={4}
+                  value={form.message} 
+                  onChange={e => setForm({ ...form, message: e.target.value })}
+                  placeholder="Details about your inquiry..."
+                  data-hover-label="WRITE"
+                  className="w-full px-4 py-3 border border-white/10 bg-slate-950 text-white font-body text-xs md:text-sm outline-none resize-none focus:border-white/30 transition-colors cursor-none placeholder-slate-700" 
+                />
+              </div>
+
+              <button 
+                type="submit" 
+                disabled={sending}
                 data-hover-label="SEND"
-                className="w-full py-4 rounded-xl font-body font-semibold text-sm relative overflow-hidden group flex items-center justify-center gap-2 disabled:opacity-60"
-                style={{
-                  background: sent ? 'linear-gradient(135deg, #86efac, #22c55e)' : 'linear-gradient(135deg, #38bdf8, #3b82f6)',
-                  boxShadow: '0 0 28px rgba(56, 189, 248,0.22)',
-                  color: '#020617', transition: 'background 0.4s', cursor: 'none',
-                }}>
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  style={{ background: 'linear-gradient(135deg, #7dd3fc, #38bdf8)' }} />
+                className="w-full py-3.5 bg-white text-black hover:bg-slate-200 disabled:opacity-60 transition-colors font-mono text-xs tracking-widest uppercase flex items-center justify-center gap-2 cursor-none"
+              >
                 {sending ? (
-                  <motion.div className="relative z-10 w-5 h-5 border-2 border-[#020617] border-t-transparent rounded-full"
-                    animate={{ rotate: 360 }} transition={{ duration: 1, repeat: Infinity, ease: 'linear' }} />
+                  <div className="w-4 h-4 border-2 border-black border-t-transparent rounded-full animate-spin" />
                 ) : sent ? (
-                  <span className="relative z-10">✓ Message Sent!</span>
+                  <span>✓ Message Sent</span>
                 ) : (
-                  <><Send size={16} className="relative z-10" /><span className="relative z-10">Send Message</span></>
+                  <>
+                    <Send size={12} />
+                    <span>Send Message</span>
+                  </>
                 )}
-              </motion.button>
+              </button>
             </form>
-          </motion.div>
+          </div>
+
         </div>
 
         {/* Footer */}
-        <motion.div initial={{ opacity: 0 }} animate={inView ? { opacity: 1 } : {}}
-          transition={{ delay: 1, duration: 0.6 }}
-          className="mt-24 pt-8 text-center"
-          style={{ borderTop: '1px solid rgba(255,255,255,0.04)' }}>
-          <p className="font-mono text-[0.6rem] tracking-[0.2em] uppercase"
-            style={{ color: 'rgba(148, 163, 184,0.28)' }}>
-            © 2026 Surya P &nbsp;·&nbsp; Designed & Built with ♥
+        <div className="mt-20 pt-8 border-t border-white/5 text-center">
+          <p className="font-mono text-[0.55rem] tracking-[0.2em] uppercase text-slate-600">
+            © 2026 Surya P &nbsp;·&nbsp; Designed & Built with strict layout guidelines
           </p>
-        </motion.div>
-      </div>
+        </div>
 
-      {/* Shimmer keyframe */}
-      <style>{`
-        @keyframes shimmer-sweep {
-          0%   { background-position: -100% 0; }
-          100% { background-position:  200% 0; }
-        }
-      `}</style>
+      </div>
     </section>
   );
 }

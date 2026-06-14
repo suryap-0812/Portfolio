@@ -1,39 +1,23 @@
-import { motion, useInView, useScroll, useTransform } from 'motion/react';
-import { useRef, useState } from 'react';
+import { motion, useInView } from 'motion/react';
+import { useRef } from 'react';
 import { Code, Server, Database, Wrench, BookOpen, Trophy } from 'lucide-react';
 import ParticleCanvas from './ParticleCanvas';
 import Timeline3D from './Timeline3D';
 
 const SKILLS = [
-  { icon: Code, title: 'Languages', desc: 'C++, C, Java, JavaScript, HTML, CSS, Python', color: '#38bdf8' },
-  { icon: Server, title: 'Technologies', desc: 'Spring Boot, NodeJS, Express, ReactJS, TailwindCSS, Django', color: '#3b82f6' },
-  { icon: Database, title: 'Databases', desc: 'SQL, MongoDB', color: '#7dd3fc' },
-  { icon: Wrench, title: 'Tools', desc: 'Git, GitHub, Postman, Vercel, Docker', color: '#38bdf8' },
-  { icon: BookOpen, title: 'Core Concepts', desc: 'Data Structures & Algorithms, OOP, DBMS', color: '#3b82f6' },
-  { icon: Trophy, title: 'Profiles', desc: 'Leetcode: 1551 Max Rating, 133+ solved · Skillrack: 1009 problems', color: '#7dd3fc' },
+  { icon: Code, title: 'Languages', desc: 'C++, C, Java, JavaScript, HTML, CSS, Python' },
+  { icon: Server, title: 'Technologies', desc: 'Spring Boot, NodeJS, Express, ReactJS, TailwindCSS, Django' },
+  { icon: Database, title: 'Databases', desc: 'SQL, MongoDB' },
+  { icon: Wrench, title: 'Tools', desc: 'Git, GitHub, Postman, Vercel, Docker' },
+  { icon: BookOpen, title: 'Core Concepts', desc: 'Data Structures & Algorithms, OOP, DBMS' },
+  { icon: Trophy, title: 'Profiles', desc: 'Leetcode: 1551 Max Rating, 133+ solved · Skillrack: 1009 problems' },
 ];
-
 
 function Label({ children }: { children: string }) {
   return (
-    <p className="font-mono text-[0.6rem] tracking-[0.42em] uppercase mb-4" style={{ color: 'rgba(56, 189, 248,0.55)' }}>
+    <p className="font-mono text-[0.55rem] tracking-[0.3em] uppercase mb-4 text-slate-500">
       // {children}
     </p>
-  );
-}
-
-/* ─── Mask-clip line wipe ─── */
-function MaskWipe({ children, delay = 0, inView }: { children: React.ReactNode; delay?: number; inView: boolean }) {
-  return (
-    <div className="overflow-hidden">
-      <motion.div
-        initial={{ y: '100%' }}
-        animate={inView ? { y: '0%' } : { y: '100%' }}
-        transition={{ duration: 0.65, delay, ease: [0.76, 0, 0.24, 1] }}
-      >
-        {children}
-      </motion.div>
-    </div>
   );
 }
 
@@ -41,119 +25,76 @@ export default function About() {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
 
-  // Scroll parallax for bg canvas
-  const { scrollYProgress } = useScroll({ target: ref, offset: ['start end', 'end start'] });
-  const bgY = useTransform(scrollYProgress, [0, 1], ['0%', '-40%']);
-  const textY = useTransform(scrollYProgress, [0, 1], ['0%', '0%']); // foreground = normal
-
   return (
-    <section id="about" ref={ref} className="relative min-h-screen py-36 px-6 overflow-hidden"
-      style={{ background: '#020617' }}>
+    <section id="about" ref={ref} className="relative min-h-screen py-24 px-6 md:px-12 bg-[#020617] border-t border-white/5">
+      <ParticleCanvas section="about" />
 
-      {/* Canvas at 0.4× pull-back via bgY */}
-      <motion.div className="absolute inset-0 will-change-transform" style={{ y: bgY }}>
-        <ParticleCanvas section="about" />
-      </motion.div>
-
-      <div className="absolute top-0 left-0 right-0 h-px"
-        style={{ background: 'linear-gradient(90deg, transparent, rgba(56, 189, 248,0.3), rgba(59, 130, 246,0.25), transparent)' }} />
-
-      <div className="relative z-10 max-w-6xl mx-auto">
-
-        {/* ─── Header — line wipe ─── */}
-        <div className="text-center mb-20">
-          <MaskWipe delay={0} inView={inView}><Label>About Me</Label></MaskWipe>
-          <MaskWipe delay={0.08} inView={inView}>
-            <h2 className="font-display tracking-wide leading-[1.1] mb-6"
-              style={{
-                fontSize: 'clamp(2.4rem, 5vw, 3.8rem)',
-                background: 'linear-gradient(135deg, #f8fafc, #38bdf8)',
-                WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
-              }}>
-              Crafted With Code
+      <div className="relative z-10 max-w-7xl mx-auto">
+        
+        {/* Header Section */}
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
+          <div className="text-left">
+            <Label>About Me</Label>
+            <h2 className="font-display text-3xl md:text-5xl font-black text-white tracking-tight uppercase">
+              Biography
             </h2>
-          </MaskWipe>
-          <MaskWipe delay={0.16} inView={inView}>
-            <p className="font-body text-base max-w-2xl mx-auto" style={{ color: '#94a3b8', lineHeight: 2 }}>
-              I'm a passionate developer with a strong foundation in full-stack web development,
-              data structures, and algorithms — dedicated to building robust, scalable applications.
-            </p>
-          </MaskWipe>
+          </div>
+          <p className="font-body text-slate-400 text-xs md:text-sm max-w-md text-left leading-relaxed">
+            I am a software engineer focused on building robust backends, responsive client UIs, and optimal data structure pipelines.
+          </p>
         </div>
 
-        {/* ─── Stats ─── */}
-        <motion.div initial={{ opacity: 0, y: 30 }} animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ delay: 0.3, duration: 0.7 }}
-          className="grid grid-cols-3 gap-px mb-20 rounded-xl overflow-hidden"
-          style={{ border: '1px solid rgba(56, 189, 248,0.08)' }}>
+        {/* Stats Grid - Editorial Layout */}
+        <div className="editorial-grid grid-cols-1 md:grid-cols-3 mb-20">
           {[
-            { label: 'Projects Built', value: '10+' },
-            { label: 'Certifications', value: '4' },
-            { label: 'Problems Solved', value: '1142+' },
+            { label: 'Selected Projects', value: '10+' },
+            { label: 'Completed Credentials', value: '4' },
+            { label: 'Code Challenges Solved', value: '1142+' },
           ].map((s, i) => (
-            <motion.div key={i}
-              initial={{ opacity: 0, y: 24 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: 0.32 + i * 0.08, duration: 0.55 }}
-              className="py-8 text-center glass">
-              <div className="font-display text-3xl mb-1" style={{
-                background: 'linear-gradient(135deg, #38bdf8, #3b82f6)',
-                WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent',
-              }}>{s.value}</div>
-              <div className="font-mono text-[0.56rem] tracking-[0.2em] uppercase"
-                style={{ color: 'rgba(148, 163, 184,0.45)' }}>{s.label}</div>
-            </motion.div>
+            <div key={i} className="grid-cell flex flex-col justify-center text-left py-8">
+              <span className="font-display text-4xl font-black text-white mb-2">{s.value}</span>
+              <span className="font-mono text-[0.55rem] tracking-[0.2em] uppercase text-slate-500">{s.label}</span>
+            </div>
           ))}
-        </motion.div>
+        </div>
 
-        {/* ─── Skills ─── */}
+        {/* Skills Grid - Editorial Layout */}
         <div className="mb-24">
-          <div className="text-center mb-10">
-            <MaskWipe delay={0.35} inView={inView}><Label>Skills & Stack</Label></MaskWipe>
+          <div className="text-left mb-8">
+            <Label>Skills & Tech Stack</Label>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-px"
-            style={{ background: 'rgba(56, 189, 248,0.04)' }}>
+          <div className="editorial-grid grid-cols-1 md:grid-cols-3">
             {SKILLS.map((sk, i) => (
-              <motion.div key={sk.title}
-                initial={{ opacity: 0, y: 36 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
-                transition={{ delay: 0.38 + i * 0.07, duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
-                whileHover={{ y: -5, transition: { duration: 0.25 } }}
+              <div
+                key={sk.title}
                 data-hover-label={sk.title.toUpperCase()}
-                className="group relative p-8 glass overflow-hidden"
-                style={{ cursor: 'none' }}
+                className="grid-cell flex flex-col justify-between group cursor-none hover:bg-white/[0.015] border-t border-white/5 md:border-t-0"
               >
-                <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-                  style={{ background: `radial-gradient(circle at 50% 0%, ${sk.color}12, transparent 70%)` }} />
-                <motion.div initial={{ scaleX: 0 }} animate={inView ? { scaleX: 1 } : {}}
-                  transition={{ delay: 0.5 + i * 0.09, duration: 0.45 }}
-                  className="absolute top-0 left-0 right-0 h-px origin-left"
-                  style={{ background: `linear-gradient(90deg, ${sk.color}, transparent)` }} />
-
-                <div className="w-12 h-12 mb-5 rounded-lg flex items-center justify-center relative overflow-hidden tag-blue"
-                  style={{ border: `1px solid ${sk.color}28` }}>
-                  <sk.icon className="w-6 h-6 relative z-10" style={{ color: sk.color }} />
+                <div>
+                  <sk.icon className="w-5 h-5 text-slate-500 mb-6 group-hover:text-sky-400 transition-colors" />
+                  <h3 className="font-display text-lg font-bold text-white mb-2 tracking-wide group-hover:text-sky-400 transition-colors">
+                    {sk.title}
+                  </h3>
+                  <p className="font-body text-slate-400 text-xs leading-relaxed">
+                    {sk.desc}
+                  </p>
                 </div>
-
-                <h3 className="font-display tracking-wide text-lg mb-2" style={{ color: '#f8fafc' }}>{sk.title}</h3>
-                <p className="font-body text-sm" style={{ color: '#94a3b8', lineHeight: 1.9 }}>{sk.desc}</p>
-
-                <div className="absolute right-4 bottom-4 font-display text-6xl select-none pointer-events-none transition-opacity duration-300 opacity-[0.03] group-hover:opacity-[0.07]"
-                  style={{ color: sk.color }}>{String(i + 1).padStart(2, '0')}</div>
-              </motion.div>
+                
+                <span className="font-mono text-[0.6rem] text-slate-600 block mt-8 select-none">
+                  // SECTION_0{i + 1}
+                </span>
+              </div>
             ))}
           </div>
         </div>
 
-        {/* ─── 3D Timeline ─── */}
-        <div className="w-[100vw] relative left-1/2 right-1/2 -mx-[50vw]">
+        {/* Timeline (Vertical block) */}
+        <div className="border-t border-white/5 pt-16">
           <Timeline3D />
         </div>
-      </div>
 
-      <div className="absolute bottom-0 left-0 right-0 h-px"
-        style={{ background: 'linear-gradient(90deg, transparent, rgba(59, 130, 246,0.3), rgba(56, 189, 248,0.3), transparent)' }} />
+      </div>
     </section>
   );
 }

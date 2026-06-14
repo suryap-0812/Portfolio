@@ -188,7 +188,6 @@ export default function CustomCursor() {
                     pointerEvents: 'none',
                     zIndex: 9999,
                     transform: 'translate(-50%, -50%)',
-                    boxShadow: '0 0 10px rgba(56, 189, 248, 0.8), 0 0 20px rgba(56, 189, 248, 0.4)',
                 }}
             />
             <div
@@ -215,7 +214,6 @@ export default function CustomCursor() {
                         borderRadius: '50%',
                         border: '1.5px solid rgba(56, 189, 248, 0.45)',
                         pointerEvents: 'none',
-                        boxShadow: 'inset 0 0 8px rgba(56, 189, 248, 0.05)',
                     }}
                 />
                 {/* Text label element (stays oriented vertically) */}
