@@ -127,7 +127,7 @@ export default function Timeline3D() {
     }, []);
 
     return (
-        <div className="relative py-20 overflow-hidden" style={{ minHeight: '80vh', background: '#08101a' }}>
+        <div className="relative py-20 overflow-hidden" style={{ minHeight: '80vh', background: '#020617' }}>
 
             {/* ─── 3D Environment Background ─── */}
             <div className="absolute inset-0 z-0 pointer-events-none mix-blend-screen opacity-70">
@@ -160,7 +160,7 @@ export default function Timeline3D() {
                     {/* GSAP Tracking Floating Ring Indicator */}
                     <div
                         ref={indicatorRef}
-                        className="absolute left-[78px] md:left-[142px] top-0 w-5 h-5 rounded-full border border-[#38bdf8] flex items-center justify-center z-20 pointer-events-none bg-[#08101a]"
+                        className="absolute left-[78px] md:left-[142px] top-0 w-5 h-5 rounded-full border border-[#38bdf8] flex items-center justify-center z-20 pointer-events-none bg-[#020617]"
                         style={{ boxShadow: '0 0 15px rgba(56, 189, 248, 0.4)' }}
                     >
                         <div className="w-2 h-2 bg-[#38bdf8] rounded-full" />
@@ -173,6 +173,7 @@ export default function Timeline3D() {
                                 key={i}
                                 ref={el => itemRefs.current[i] = el}
                                 className="relative flex items-center gap-8 group"
+                                data-hover-label="AWARD"
                             >
                                 {/* Year Marker (Left of the line) */}
                                 <div className="absolute -left-[100px] md:-left-[160px] w-[60px] text-right">

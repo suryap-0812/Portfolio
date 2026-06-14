@@ -48,7 +48,7 @@ export default function About() {
 
   return (
     <section id="about" ref={ref} className="relative min-h-screen py-36 px-6 overflow-hidden"
-      style={{ background: '#0f172a' }}>
+      style={{ background: '#020617' }}>
 
       {/* Canvas at 0.4× pull-back via bgY */}
       <motion.div className="absolute inset-0 will-change-transform" style={{ y: bgY }}>
@@ -120,6 +120,7 @@ export default function About() {
                 animate={inView ? { opacity: 1, y: 0 } : {}}
                 transition={{ delay: 0.38 + i * 0.07, duration: 0.6, ease: [0.23, 1, 0.32, 1] }}
                 whileHover={{ y: -5, transition: { duration: 0.25 } }}
+                data-hover-label={sk.title.toUpperCase()}
                 className="group relative p-8 glass overflow-hidden"
                 style={{ cursor: 'none' }}
               >

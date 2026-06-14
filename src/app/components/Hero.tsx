@@ -263,6 +263,7 @@ export default function Hero() {
               whileHover={{ scale: 1.25, y: -5 }}
               whileTap={{ scale: 0.88 }}
               aria-label={s.label}
+              data-hover-label={s.label.toUpperCase()}
               className="p-3 rounded-xl glass border-blue transition-all duration-300"
               style={{ cursor: 'none' }}
               onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.boxShadow = '0 0 18px rgba(56, 189, 248,0.18)'; }}
@@ -284,6 +285,7 @@ export default function Hero() {
             onClick={() => document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' })}
             whileHover={{ scale: 1.06 }}
             whileTap={{ scale: 0.96 }}
+            data-hover-label="WORK"
             className="relative overflow-hidden px-8 py-3.5 rounded-xl font-body font-semibold text-sm group"
             style={{
               background: 'linear-gradient(135deg, #38bdf8, #3b82f6)',
@@ -301,6 +303,7 @@ export default function Hero() {
             onClick={() => document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' })}
             whileHover={{ scale: 1.06 }}
             whileTap={{ scale: 0.96 }}
+            data-hover-label="TALK"
             className="relative overflow-hidden px-8 py-3.5 rounded-xl font-body font-medium text-sm group"
             style={{ border: '1px solid rgba(56, 189, 248,0.22)', color: '#f8fafc', background: 'transparent', cursor: 'none' }}
           >
@@ -317,6 +320,7 @@ export default function Hero() {
           animate={{ opacity: visible ? 1 : 0, y: [0, 12, 0] }}
           transition={{ opacity: { duration: 0.6, delay: 1 }, y: { duration: 2, repeat: Infinity, ease: 'easeInOut' } }}
           aria-label="Scroll down"
+          data-hover-label="SCROLL"
           style={{ color: 'rgba(148, 163, 184,0.4)', cursor: 'none' }}
           className="transition-colors duration-300 hover:text-[#38bdf8]"
         >

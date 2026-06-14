@@ -80,6 +80,7 @@ function ShimmerBlock() {
         animate={playing ? { scale: [1.15, 1] } : { scale: 1 }}
         transition={{ type: 'spring', stiffness: 260, damping: 14 }}
         aria-label="Play demo"
+        data-hover-label="PLAY"
         style={{ cursor: 'none' }}
         className="relative w-14 h-14 rounded-full flex items-center justify-center"
         onClick={() => { }}
@@ -109,6 +110,7 @@ function ScrambleCTA() {
       onMouseLeave={() => { setHovered(false); reset(); }}
       whileHover={{ scale: 1.03 }}
       whileTap={{ scale: 0.97 }}
+      data-hover-label="EMAIL"
       className="inline-flex items-center gap-3 px-7 py-4 rounded-xl font-mono text-sm tracking-[0.06em] relative overflow-hidden group mt-6"
       style={{ cursor: 'none', background: 'transparent' }}
     >
@@ -160,7 +162,7 @@ export default function Contact() {
     border: '1px solid rgba(56, 189, 248,0.1)',
     color: '#f8fafc',
     outline: 'none',
-    fontFamily: '"Playpen Sans Arabic", sans-serif',
+    fontFamily: '"Plus Jakarta Sans", sans-serif',
     transition: 'border-color 0.3s, box-shadow 0.3s',
   };
   const onFocus = (e: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -174,7 +176,7 @@ export default function Contact() {
 
   return (
     <section id="contact" ref={ref} className="relative min-h-screen py-36 px-6 overflow-hidden"
-      style={{ background: '#0f172a' }}>
+      style={{ background: '#020617' }}>
 
       <motion.div className="absolute inset-0 will-change-transform" style={{ y: bgY }}>
         <ParticleCanvas section="contact" />
@@ -251,6 +253,7 @@ export default function Contact() {
                 initial={{ opacity: 0, x: -22 }} animate={inView ? { opacity: 1, x: 0 } : {}}
                 transition={{ delay: 0.35 + i * 0.1, duration: 0.5 }}
                 whileHover={{ x: 8 }}
+                data-hover-label={info.label.toUpperCase()}
                 className="group flex items-center gap-4 p-5 rounded-xl relative overflow-hidden"
                 style={{ background: 'rgba(15, 23, 42,0.6)', border: '1px solid rgba(56, 189, 248,0.08)', cursor: 'none' }}
                 onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.borderColor = 'rgba(56, 189, 248,0.26)'; (e.currentTarget as HTMLAnchorElement).style.background = 'rgba(56, 189, 248,0.04)'; }}
@@ -290,7 +293,8 @@ export default function Contact() {
                   <input type={f.type} id={f.id} required
                     value={f.val} onChange={e => setForm({ ...form, [f.key]: e.target.value })}
                     placeholder={f.ph}
-                    className="w-full px-4 py-3 rounded-xl text-sm placeholder-[#334155]"
+                    data-hover-label="WRITE"
+                    className="w-full px-4 py-3 rounded-xl text-sm placeholder-[#334155] cursor-none"
                     style={inputStyle} onFocus={onFocus} onBlur={onBlur} />
                 </div>
               ))}
@@ -301,7 +305,8 @@ export default function Contact() {
                 <textarea id="c-msg" required rows={5}
                   value={form.message} onChange={e => setForm({ ...form, message: e.target.value })}
                   placeholder="Tell me about your project..."
-                  className="w-full px-4 py-3 rounded-xl text-sm resize-none placeholder-[#334155]"
+                  data-hover-label="WRITE"
+                  className="w-full px-4 py-3 rounded-xl text-sm resize-none placeholder-[#334155] cursor-none"
                   style={inputStyle as React.CSSProperties}
                   onFocus={onFocus as React.FocusEventHandler<HTMLTextAreaElement>}
                   onBlur={onBlur as React.FocusEventHandler<HTMLTextAreaElement>} />
@@ -309,6 +314,7 @@ export default function Contact() {
 
               <motion.button type="submit" disabled={sending}
                 whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}
+                data-hover-label="SEND"
                 className="w-full py-4 rounded-xl font-body font-semibold text-sm relative overflow-hidden group flex items-center justify-center gap-2 disabled:opacity-60"
                 style={{
                   background: sent ? 'linear-gradient(135deg, #86efac, #22c55e)' : 'linear-gradient(135deg, #38bdf8, #3b82f6)',
@@ -337,7 +343,7 @@ export default function Contact() {
           style={{ borderTop: '1px solid rgba(255,255,255,0.04)' }}>
           <p className="font-mono text-[0.6rem] tracking-[0.2em] uppercase"
             style={{ color: 'rgba(148, 163, 184,0.28)' }}>
-            © 2025 Surya P &nbsp;·&nbsp; Designed & Built with ♥
+            © 2026 Surya P &nbsp;·&nbsp; Designed & Built with ♥
           </p>
         </motion.div>
       </div>
