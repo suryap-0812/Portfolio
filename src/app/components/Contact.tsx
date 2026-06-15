@@ -122,7 +122,7 @@ export default function Contact() {
   };
 
   return (
-    <section id="contact" className="relative min-h-screen py-24 px-6 md:px-12 bg-[#020617] border-t border-white/5 overflow-hidden">
+    <section id="contact" className="relative min-h-screen py-24 px-6 md:px-12 theme-bg border-t theme-border overflow-hidden">
       <ParticleCanvas section="contact" />
 
       <div className="relative z-10 max-w-7xl mx-auto">

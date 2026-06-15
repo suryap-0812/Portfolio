@@ -75,7 +75,7 @@ export default function Timeline3D() {
   }, []);
 
   return (
-    <div className="relative py-12 bg-[#020617]">
+    <div className="relative py-12 theme-bg">
       <div className="max-w-4xl mx-auto px-6">
         
         {/* Header */}

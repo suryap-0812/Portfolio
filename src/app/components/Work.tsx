@@ -166,7 +166,7 @@ export default function Work() {
   const [activeProject, setActiveProject] = useState<typeof PROJECTS[0] | null>(null);
 
   return (
-    <section id="work" className="relative min-h-screen py-24 px-6 md:px-12 bg-[#020617] border-t border-white/5">
+    <section id="work" className="relative min-h-screen py-24 px-6 md:px-12 theme-bg border-t theme-border">
       <ParticleCanvas section="work" />
 
       <div className="relative z-10 max-w-7xl mx-auto">

@@ -21,8 +21,10 @@ export default function ParticleCanvas({ section }: { section: Section }) {
 
       ctx.clearRect(0, 0, W, H);
       
+      const isLight = document.documentElement.classList.contains('light');
+
       // Extremely subtle blueprint grid lines
-      ctx.strokeStyle = 'rgba(255, 255, 255, 0.012)';
+      ctx.strokeStyle = isLight ? 'rgba(15, 23, 42, 0.028)' : 'rgba(0, 240, 255, 0.028)';
       ctx.lineWidth = 1;
 
       const gridSize = 64; // px size of squares
@@ -44,7 +46,7 @@ export default function ParticleCanvas({ section }: { section: Section }) {
       }
 
       // Draw subtle intersection coordinates or tiny crosshair ticks
-      ctx.fillStyle = 'rgba(56, 189, 248, 0.04)';
+      ctx.fillStyle = isLight ? 'rgba(2, 132, 199, 0.07)' : 'rgba(0, 240, 255, 0.06)';
       for (let x = gridSize; x < W; x += gridSize * 2) {
         for (let y = gridSize; y < H; y += gridSize * 2) {
           // Draw a small 4x4 tick at cross sections
@@ -54,7 +56,7 @@ export default function ParticleCanvas({ section }: { section: Section }) {
 
       // Accent diagonal line for hero
       if (section === 'hero') {
-        ctx.strokeStyle = 'rgba(56, 189, 248, 0.015)';
+        ctx.strokeStyle = isLight ? 'rgba(2, 132, 199, 0.035)' : 'rgba(0, 240, 255, 0.03)';
         ctx.beginPath();
         ctx.moveTo(0, 0);
         ctx.lineTo(W, H);
@@ -66,11 +68,17 @@ export default function ParticleCanvas({ section }: { section: Section }) {
       drawGrid();
     };
 
+    const observer = new MutationObserver(() => {
+      drawGrid();
+    });
+    observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class'] });
+
     window.addEventListener('resize', handleResize, { passive: true });
     drawGrid();
 
     return () => {
       window.removeEventListener('resize', handleResize);
+      observer.disconnect();
     };
   }, [section]);
 

@@ -29,7 +29,7 @@ export default function About() {
   const inView = useInView(ref, { once: true, margin: '-80px' });
 
   return (
-    <section id="about" ref={ref} className="relative min-h-screen py-24 px-6 md:px-12 bg-[#020617] border-t border-white/5 overflow-hidden">
+    <section id="about" ref={ref} className="relative min-h-screen py-24 px-6 md:px-12 theme-bg border-t theme-border overflow-hidden">
       {/* Blueprint background grid */}
       <ParticleCanvas section="about" />
 

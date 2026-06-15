@@ -62,11 +62,11 @@ function Laptop() {
           distanceFactor={2.7}
           position={[0, 1.1, 0.06]}
         >
-          <div className="w-[500px] h-[320px] bg-slate-950/95 border-2 border-sky-500/40 rounded-lg p-5 font-mono text-xs text-sky-400 select-none flex flex-col justify-between shadow-[0_0_35px_rgba(56,189,248,0.25)]">
+          <div className="w-[500px] h-[320px] bg-slate-950/95 border-2 border-[#00f0ff]/50 rounded-lg p-5 font-mono text-xs text-sky-400 select-none flex flex-col justify-between shadow-[0_0_40px_rgba(0,240,255,0.4)]">
             
             {/* Window Top Controls */}
             <div>
-              <div className="flex justify-between items-center border-b border-sky-500/20 pb-2.5 mb-4">
+              <div className="flex justify-between items-center border-b border-[#00f0ff]/20 pb-2.5 mb-4">
                 <div className="flex items-center gap-1.5">
                   <span className="w-2.5 h-2.5 rounded-full bg-red-500/60" />
                   <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/60" />
@@ -82,23 +82,23 @@ function Laptop() {
                   guest@surya:~$ <span className="text-sky-300">cat info.json</span>
                 </p>
                 <div className="pl-4 border-l border-sky-500/20 py-0.5 space-y-1.5 text-slate-300">
-                  <p><span className="text-sky-400/80">IDENTITY:</span> Surya P</p>
-                  <p><span className="text-sky-400/80">POSITION:</span> Full Stack Developer Intern</p>
-                  <p><span className="text-sky-400/80">CAMPUS:</span> Sri Eshwar College of Engineering</p>
+                  <p><span className="text-[#00f0ff]">IDENTITY:</span> Surya P</p>
+                  <p><span className="text-[#00f0ff]">POSITION:</span> Full Stack Developer Intern</p>
+                  <p><span className="text-[#00f0ff]">CAMPUS:</span> Sri Eshwar College of Engineering</p>
                 </div>
                 <p className="text-white">
                   guest@surya:~$ <span className="text-sky-300">sys --status</span>
                 </p>
-                <p className="text-slate-300 pl-4">
+                <p className="text-[#bae6fd] pl-4">
                   C++ · Java · JavaScript · ReactJS · Node.js · Spring Boot · PostgreSQL
                 </p>
               </div>
             </div>
             
             {/* Window Footer Status */}
-            <div className="flex justify-between items-center text-[0.65rem] text-slate-500 border-t border-sky-500/10 pt-2.5">
+            <div className="flex justify-between items-center text-[0.65rem] text-slate-500 border-t border-[#00f0ff]/10 pt-2.5">
               <span>PORT: 5173</span>
-              <span className="animate-pulse text-sky-400 font-semibold">[ SHELL STATUS: ACTIVE ]</span>
+              <span className="animate-pulse text-[#00f0ff] font-semibold">[ SHELL STATUS: ACTIVE ]</span>
             </div>
             
           </div>
@@ -111,22 +111,22 @@ function Laptop() {
 
 export default function Hero3DScene() {
   return (
-    <div className="absolute inset-0 z-0 opacity-80 mix-blend-screen pointer-events-none">
+    <div className="absolute inset-0 z-0 opacity-90 mix-blend-screen pointer-events-none">
       <Canvas
         camera={{ position: [0, 0, 5.0], fov: 45 }}
         gl={{ alpha: true, antialias: true, stencil: false, depth: true }}
         dpr={[1, 1.5]}
       >
-        <ambientLight intensity={0.5} />
+        <ambientLight intensity={0.65} />
         
         {/* Futuristic direction lights mapping colors */}
-        <directionalLight position={[10, 8, 5]} intensity={2.2} color="#38bdf8" />
-        <directionalLight position={[-10, -5, -3]} intensity={1.5} color="#c084fc" />
-        <pointLight position={[0, 4, -2]} intensity={1.2} color="#60a5fa" />
+        <directionalLight position={[10, 8, 5]} intensity={2.8} color="#00f0ff" />
+        <directionalLight position={[-10, -5, -3]} intensity={2.0} color="#e0a0ff" />
+        <pointLight position={[0, 4, -2]} intensity={1.8} color="#0055ff" />
 
         {/* Faint technical dust particles */}
-        <Sparkles count={50} scale={10} size={1.5} speed={0.35} opacity={0.3} color="#38bdf8" />
-        <Sparkles count={25} scale={12} size={2.0} speed={0.2} opacity={0.15} color="#c084fc" />
+        <Sparkles count={80} scale={10} size={1.8} speed={0.4} opacity={0.4} color="#00f0ff" />
+        <Sparkles count={40} scale={12} size={2.2} speed={0.25} opacity={0.25} color="#e0a0ff" />
 
         <Laptop />
         <Environment preset="night" />

@@ -71,7 +71,7 @@ export default function Hero() {
   }, []);
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center pt-24 overflow-hidden bg-[#020617]">
+    <section id="home" className="relative min-h-screen flex items-center justify-center pt-24 overflow-hidden theme-bg">
       {/* Background blueprint grid overlay */}
       <ParticleCanvas section="hero" />
 
@@ -79,7 +79,7 @@ export default function Hero() {
       <div className="relative z-10 w-full max-w-7xl mx-auto px-6 md:px-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
         
         {/* Left Column: Typography & Content */}
-        <div className="lg:col-span-7 flex flex-col justify-center text-left py-12">
+        <div className="lg:col-span-6 flex flex-col justify-center text-left py-12">
           
           {/* Status badge */}
           {visible && (
@@ -164,7 +164,7 @@ export default function Hero() {
         </div>
 
         {/* Right Column: 3D Geometries viewport inside a clean bordered frame */}
-        <div className="lg:col-span-5 h-[50vh] lg:h-[65vh] relative rounded-lg overflow-hidden border border-white/5 bg-slate-950/20 backdrop-blur-sm">
+        <div className="lg:col-span-6 h-[50vh] lg:h-[65vh] relative rounded-lg overflow-hidden border border-white/5 bg-slate-950/20 backdrop-blur-sm">
           {/* Internal corner ticks to make it look like a tech layout frame */}
           <div className="absolute top-2 left-2 w-2 h-2 border-t border-l border-white/20" />
           <div className="absolute top-2 right-2 w-2 h-2 border-t border-r border-white/20" />

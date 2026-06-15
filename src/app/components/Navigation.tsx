@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 
 const NAV_ITEMS = [
   { id: 'home', label: 'Home' },
@@ -13,6 +13,28 @@ export default function Navigation() {
   const [activeTab, setActiveTab] = useState('home');
   const [isMobile, setIsMobile] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const [theme, setTheme] = useState<'dark' | 'light'>('dark');
+
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const isLight = document.documentElement.classList.contains('light');
+      setTheme(isLight ? 'light' : 'dark');
+    }
+  }, []);
+
+  const toggleTheme = () => {
+    const next = theme === 'dark' ? 'light' : 'dark';
+    setTheme(next);
+    if (next === 'light') {
+      document.documentElement.classList.add('light');
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    } else {
+      document.documentElement.classList.add('dark');
+      document.documentElement.classList.remove('light');
+      localStorage.setItem('theme', 'dark');
+    }
+  };
 
   useEffect(() => {
     const onScroll = () => {
@@ -50,7 +72,7 @@ export default function Navigation() {
       <div className="flex items-center">
         <button
           onClick={() => scrollTo('home')}
-          className="text-lg font-display tracking-widest font-bold text-white hover:text-sky-400 transition-colors uppercase cursor-none"
+          className="text-lg font-display tracking-widest font-bold text-[var(--color-text)] hover:text-sky-400 transition-colors uppercase cursor-none"
           data-hover-label="HOME"
         >
           &lt;SuryaP /&gt;
@@ -67,9 +89,9 @@ export default function Navigation() {
               onClick={() => scrollTo(item.id)}
               data-hover-label={item.label.toUpperCase()}
               className="relative py-1 font-mono text-xs md:text-sm tracking-[0.18em] uppercase transition-colors duration-250 cursor-none"
-              style={{ color: active ? '#ffffff' : '#94a3b8' }}
+              style={{ color: active ? 'var(--theme-text)' : 'var(--theme-muted)' }}
             >
-              <span className="hover:text-white transition-colors duration-200">
+              <span className="hover:text-[var(--theme-text)] transition-colors duration-200">
                 {item.label}
               </span>
               
@@ -84,6 +106,15 @@ export default function Navigation() {
             </button>
           );
         })}
+
+        {/* Theme Toggle Button next to Contact */}
+        <button
+          onClick={toggleTheme}
+          data-hover-label="THEME"
+          className="p-2 ml-2 text-[var(--theme-muted)] hover:text-[var(--theme-text)] transition-all cursor-none border border-white/5 theme-border-strong rounded bg-transparent"
+        >
+          {theme === 'dark' ? <Sun size={18} /> : <Moon size={18} />}
+        </button>
       </nav>
 
       {/* Mobile Menu Button */}
@@ -122,6 +153,15 @@ export default function Navigation() {
                   </button>
                 );
               })}
+
+              {/* Mobile theme toggle */}
+              <button
+                onClick={toggleTheme}
+                className="w-full flex items-center justify-between py-3.5 px-4 font-mono text-xs tracking-[0.15em] uppercase rounded-lg text-slate-400 hover:text-white hover:bg-white/5"
+              >
+                <span>Theme: {theme === 'dark' ? 'Light' : 'Dark'}</span>
+                {theme === 'dark' ? <Sun size={16} /> : <Moon size={16} />}
+              </button>
             </div>
           </motion.div>
         )}
