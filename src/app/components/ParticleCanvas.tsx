@@ -24,7 +24,7 @@ export default function ParticleCanvas({ section }: { section: Section }) {
       const isLight = document.documentElement.classList.contains('light');
 
       // Extremely subtle blueprint grid lines
-      ctx.strokeStyle = isLight ? 'rgba(15, 23, 42, 0.028)' : 'rgba(0, 240, 255, 0.028)';
+      ctx.strokeStyle = isLight ? 'rgba(15, 23, 42, 0.028)' : 'rgba(59, 130, 246, 0.028)';
       ctx.lineWidth = 1;
 
       const gridSize = 64; // px size of squares
@@ -46,7 +46,7 @@ export default function ParticleCanvas({ section }: { section: Section }) {
       }
 
       // Draw subtle intersection coordinates or tiny crosshair ticks
-      ctx.fillStyle = isLight ? 'rgba(2, 132, 199, 0.07)' : 'rgba(0, 240, 255, 0.06)';
+      ctx.fillStyle = isLight ? 'rgba(2, 132, 199, 0.07)' : 'rgba(59, 130, 246, 0.06)';
       for (let x = gridSize; x < W; x += gridSize * 2) {
         for (let y = gridSize; y < H; y += gridSize * 2) {
           // Draw a small 4x4 tick at cross sections
@@ -56,7 +56,7 @@ export default function ParticleCanvas({ section }: { section: Section }) {
 
       // Accent diagonal line for hero
       if (section === 'hero') {
-        ctx.strokeStyle = isLight ? 'rgba(2, 132, 199, 0.035)' : 'rgba(0, 240, 255, 0.03)';
+        ctx.strokeStyle = isLight ? 'rgba(2, 132, 199, 0.035)' : 'rgba(59, 130, 246, 0.03)';
         ctx.beginPath();
         ctx.moveTo(0, 0);
         ctx.lineTo(W, H);

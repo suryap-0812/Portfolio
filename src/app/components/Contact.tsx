@@ -4,8 +4,7 @@ import { Mail, MapPin, Phone, Send } from 'lucide-react';
 import ParticleCanvas from './ParticleCanvas';
 
 const CONTACT_INFO = [
-  { icon: Mail, label: 'Email', value: 'surya.p2024cse@sece.ac.in', href: 'mailto:surya.p2024cse@sece.ac.in', coord: 'SYS.CONN: EML' },
-  { icon: Phone, label: 'Phone', value: '+91 98765 43210', href: 'tel:+919876543210', coord: 'SYS.CONN: TEL' },
+  { icon: Mail, label: 'Email', value: 'surya.pmain2005@gmail.com', href: 'mailto:surya.pmain2005@gmail.com', coord: 'SYS.CONN: EML' },
   { icon: MapPin, label: 'Location', value: 'India', href: '#', coord: 'SYS.CONN: LOC' },
 ];
 
@@ -93,7 +92,7 @@ function ScrambleCTA() {
 
   return (
     <a
-      href="mailto:surya.p2024cse@sece.ac.in"
+      href="mailto:surya.pmain2005@gmail.com"
       onMouseEnter={start}
       onMouseLeave={reset}
       data-hover-label="EMAIL"

@@ -62,11 +62,11 @@ function Laptop() {
           distanceFactor={2.7}
           position={[0, 1.1, 0.06]}
         >
-          <div className="w-[500px] h-[320px] bg-slate-950/95 border-2 border-[#00f0ff]/50 rounded-lg p-5 font-mono text-xs text-sky-400 select-none flex flex-col justify-between shadow-[0_0_40px_rgba(0,240,255,0.4)]">
+          <div className="w-[500px] h-[320px] bg-slate-950/95 border-2 border-[#3B82F6]/50 rounded-lg p-5 font-mono text-xs text-sky-400 select-none flex flex-col justify-between shadow-[0_0_40px_rgba(59,130,246,0.35)]">
             
             {/* Window Top Controls */}
             <div>
-              <div className="flex justify-between items-center border-b border-[#00f0ff]/20 pb-2.5 mb-4">
+              <div className="flex justify-between items-center border-b border-[#3B82F6]/20 pb-2.5 mb-4">
                 <div className="flex items-center gap-1.5">
                   <span className="w-2.5 h-2.5 rounded-full bg-red-500/60" />
                   <span className="w-2.5 h-2.5 rounded-full bg-yellow-500/60" />
@@ -82,23 +82,23 @@ function Laptop() {
                   guest@surya:~$ <span className="text-sky-300">cat info.json</span>
                 </p>
                 <div className="pl-4 border-l border-sky-500/20 py-0.5 space-y-1.5 text-slate-300">
-                  <p><span className="text-[#00f0ff]">IDENTITY:</span> Surya P</p>
-                  <p><span className="text-[#00f0ff]">POSITION:</span> Full Stack Developer Intern</p>
-                  <p><span className="text-[#00f0ff]">CAMPUS:</span> Sri Eshwar College of Engineering</p>
+                  <p><span className="text-[#3B82F6]">IDENTITY:</span> Surya P</p>
+                  <p><span className="text-[#3B82F6]">POSITION:</span> Full Stack Developer Intern</p>
+                  <p><span className="text-[#3B82F6]">CAMPUS:</span> Sri Eshwar College of Engineering</p>
                 </div>
                 <p className="text-white">
                   guest@surya:~$ <span className="text-sky-300">sys --status</span>
                 </p>
-                <p className="text-[#bae6fd] pl-4">
+                <p className="text-[#94A3B8] pl-4">
                   C++ · Java · JavaScript · ReactJS · Node.js · Spring Boot · PostgreSQL
                 </p>
               </div>
             </div>
             
             {/* Window Footer Status */}
-            <div className="flex justify-between items-center text-[0.65rem] text-slate-500 border-t border-[#00f0ff]/10 pt-2.5">
+            <div className="flex justify-between items-center text-[0.65rem] text-slate-500 border-t border-[#3B82F6]/10 pt-2.5">
               <span>PORT: 5173</span>
-              <span className="animate-pulse text-[#00f0ff] font-semibold">[ SHELL STATUS: ACTIVE ]</span>
+              <span className="animate-pulse text-[#3B82F6] font-semibold">[ SHELL STATUS: ACTIVE ]</span>
             </div>
             
           </div>
@@ -120,13 +120,13 @@ export default function Hero3DScene() {
         <ambientLight intensity={0.65} />
         
         {/* Futuristic direction lights mapping colors */}
-        <directionalLight position={[10, 8, 5]} intensity={2.8} color="#00f0ff" />
-        <directionalLight position={[-10, -5, -3]} intensity={2.0} color="#e0a0ff" />
-        <pointLight position={[0, 4, -2]} intensity={1.8} color="#0055ff" />
+        <directionalLight position={[10, 8, 5]} intensity={2.8} color="#3B82F6" />
+        <directionalLight position={[-10, -5, -3]} intensity={2.0} color="#60a5fa" />
+        <pointLight position={[0, 4, -2]} intensity={1.8} color="#2563EB" />
 
         {/* Faint technical dust particles */}
-        <Sparkles count={80} scale={10} size={1.8} speed={0.4} opacity={0.4} color="#00f0ff" />
-        <Sparkles count={40} scale={12} size={2.2} speed={0.25} opacity={0.25} color="#e0a0ff" />
+        <Sparkles count={80} scale={10} size={1.8} speed={0.4} opacity={0.4} color="#3B82F6" />
+        <Sparkles count={40} scale={12} size={2.2} speed={0.25} opacity={0.25} color="#60a5fa" />
 
         <Laptop />
         <Environment preset="night" />
